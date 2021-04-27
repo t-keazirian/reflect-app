@@ -22,6 +22,8 @@ class SignUp extends React.Component {
 								name='email'
 								id='email'
 								placeholder='type your email here'
+								required
+								aria-required
 							/>
 							<label for='password'>Password:</label>
 							<input
@@ -29,6 +31,8 @@ class SignUp extends React.Component {
 								name='password'
 								id='password'
 								placeholder='type your password here'
+								required
+								aria-required
 							/>
 							<button type='submit'>Sign Me Up!</button>
 						</form>
