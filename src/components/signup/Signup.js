@@ -4,8 +4,8 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<>
-				<section class='signup-section'>
-					<div class='signup-div'>
+				<section className='signup-section'>
+					<div className='signup-div'>
 						<h1>Sign up for your free Reflect account</h1>
 						<p>
 							Your meditation journey starts here. Committing to as little as 3
@@ -13,8 +13,8 @@ class SignUp extends React.Component {
 						</p>
 					</div>
 				</section>
-				<section class='signup-div'>
-					<div class='form'>
+				<section className='signup-div'>
+					<div className='form'>
 						<form>
 							<label for='email'>Email Address:</label>
 							<input

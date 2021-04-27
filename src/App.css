@@ -128,6 +128,13 @@ section.login {
   text-align: center;
 }
 
+/* Meditation Summary */
+
+li.meditation-list-item {
+	list-style-type: none;
+	border: 1px solid black;
+}
+
 /* Not Found */
 p.not-found {
 	text-align: center;

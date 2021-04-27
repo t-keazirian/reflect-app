@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom';
 export default function Nav() {
 	return (
 		<header>
-			<nav class='nav'>
+			<nav className='nav'>
 				<Link className='homepage-link' to='/'>
 					<FontAwesomeIcon icon={faSpa} size='1x' className='font-awesome' />
 					Reflect
 				</Link>
-				<div class='nav'>
+				<div className='nav'>
 					<Link className='login-link' to='/login'>
 						<FontAwesomeIcon
 							className='font-awesome'
@@ -30,10 +30,10 @@ export default function Nav() {
 							className='font-awesome'
 							size='1x'
 						/>
-            Sign Up
+						Sign Up
 					</Link>
 				</div>
-        </nav>
+			</nav>
 		</header>
 	);
 }

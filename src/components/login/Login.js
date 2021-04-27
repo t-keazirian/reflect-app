@@ -3,10 +3,10 @@ import React from 'react';
 class Login extends React.Component {
 	render() {
 		return (
-			<section class='login'>
-				<div class='login'>
+			<section className='login'>
+				<div className='login'>
 					<h1>Sign in to your Reflect account</h1>
-					<div class='form'>
+					<div className='form'>
 						<form>
 							<label for='email'>Email Address:</label>
 							<input

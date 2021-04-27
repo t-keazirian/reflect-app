@@ -3,8 +3,8 @@ import React from 'react';
 class LandingPage extends React.Component {
 	render() {
 		return (
-			<div class='landing-page'>
-				<header class='main'>
+			<div className='landing-page'>
+				<header className='main'>
 					<h1>Reflect</h1>
 					<h2>find inner peace</h2>
 					{/* <img src='/Users/taylorkeazirian/Desktop/Thinkful/reflect-app/reflect-app/public/images/zoltan-tasi-vHnVtLK8rCc-unsplash.jpg' alt='Lotus Flower' />
@@ -19,9 +19,9 @@ class LandingPage extends React.Component {
 						</a>
 					</span> */}
 				</header>
-				<section class='why'>
+				<section className='why'>
 					<h3>Why Reflect?</h3>
-					<div class='intro'>
+					<div className='intro'>
 						<p>
 							By now, you have most likely heard of meditation. Maybe you've
 							even tried it! According to
@@ -37,8 +37,8 @@ class LandingPage extends React.Component {
 						</p>
 					</div>
 				</section>
-				<section class='what'>
-					<div class='mid'>
+				<section className='what'>
+					<div className='mid'>
 						<h3>How does it work?</h3>
 						<p>
 							With Reflect, you choose to practice a quiet meditation for 3
@@ -61,8 +61,8 @@ class LandingPage extends React.Component {
 						</p>
 					</div>
 				</section>
-				<section class='signup'>
-					<div class='signup'>
+				<section className='signup'>
+					<div className='signup'>
 						<h3>Sign up</h3>
 						<p>
 							When you sign up for a Reflect account, you can track your
