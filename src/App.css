@@ -1,38 +1,205 @@
-.App {
+* {
+	box-sizing: border-box;
+}
+
+/* html,
+body {
+	font-family: avenir;
+	height: 100%;
+	background-color: #f1f2eb;
+	margin: 0;
+} */
+
+/* Nav */
+
+nav {
+	padding-bottom: 20px;
+	padding-top: 20px;
+	background-color: #89ac55;
+	display: flex;
+	justify-content: space-around;
+}
+
+div.nav {
+	display: flex;
+	justify-content: space-around;
+	padding: 0;
+	align-items: center;
+}
+
+.fa-1x,
+.fa-2x {
+	margin-right: 5px;
+}
+
+/* Links */
+
+a {
+	text-decoration: none;
+	color: #ecf2e6;
+}
+
+a:visited {
+	color: #ecf2e6;
+}
+
+a.meditate-link:link {
+	color: blue;
+}
+
+a.meditate-link:visited {
+	color: blue;
+}
+
+a.homepage-link {
+	font-size: 25px;
+}
+
+a.signup-link {
+	padding-left: 20px;
+}
+
+/* Landing Page */
+
+header.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+p {
+	line-height: 1.5;
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+div.app {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+section.why,
+section.what,
+section.signup {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/* Sign Up */
+
+div.signup-div {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+section.signup-div {
+	display: flex;
+	justify-content: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+input[type='email'],
+input[type='password'] {
+	margin: 5px;
+}
+
+button[type='submit'] {
+	margin-top: 10px;
+}
+
+/* Login */
+
+section.login {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Not Found */
+p.not-found {
+	text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Footer */
+
+p.p-footer {
+	text-align: center;
+	padding-bottom: 20px;
+	margin-bottom: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+footer {
+	background-color: #89ac55;
+	color: #ecf2e6;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+footer#contact {
+	margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+div.icons {
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+}
+
+@media all and (min-width: 600px) {
+	/* Nav */
+	nav {
+		justify-content: space-between;
+	}
+
+	a.homepage-link {
+		margin-left: 20px;
+	}
+
+	a.signup-link {
+		margin-right: 20px;
+	}
+
+	/* Landing Page */
+	div.landing-page {
+		max-width: 800px;
+	}
+
+	section.why,
+	section.what,
+	section.signup {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Footer */
+	footer {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	footer#contact {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 20px;
+	}
+
+	div.footer {
+		display: flex;
+		flex-direction: column;
+	}
 }
