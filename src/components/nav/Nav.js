@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
+// if not logged in, show log in
+// if logged in, show dashboard
 export default function Nav() {
 	return (
 		<header>

@@ -8,28 +8,33 @@ import { Route, Switch } from 'react-router';
 import NotFound from './components/notfound/NotFound';
 import SignUp from './components/signup/Signup';
 import Login from './components/login/Login';
-import MeditationDetail from './components/indv-meditation/MeditationSummary';
+import MeditationDetail from './components/meditation-detail/MeditationDetail';
 import ApiContext from './context/ApiContext';
-import store from './store';
+import Start from './components/start-meditation/Start';
+import meditations from './store';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			meditations: [],
+			meditations: meditations,
+			signedIn: false
 		};
 	}
 
-	componentDidMount() {
-		this.setState({
-			meditations: store,
-		});
-	}
+	// once they submit form, set state signedIn to true
+
+	// componentDidMount() {
+	// 	this.setState({
+	// 		meditations: store,
+	// 	});
+	// }
 
 	handleDeleteMeditation = meditationId => {
-		const newArray = this.state.goals.filter(
+		const newArray = this.state.meditations.filter(
 			meditation => meditation.id !== meditationId
 		);
+		console.log(newArray);
 		this.setState({
 			meditations: newArray,
 		});
@@ -43,7 +48,7 @@ class App extends React.Component {
 
 	render() {
 		const contextValue = {
-			meditations: this.state.meditations,
+			meditations: meditations,
 			deleteMeditation: this.handleDeleteMeditation,
 			addMeditation: this.handleAddMeditation,
 		};
@@ -58,6 +63,7 @@ class App extends React.Component {
 							<Route path='/dashboard' component={Dashboard} />
 							<Route path='/signup' component={SignUp} />
 							<Route path='/login' component={Login} />
+							<Route path='/start' component={Start} />
 							<Route path='/:id' component={MeditationDetail} />
 							<Route component={NotFound} />
 						</Switch>

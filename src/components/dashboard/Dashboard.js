@@ -1,8 +1,18 @@
 import React from 'react';
-import TotalMeditations from '../../total-meditations/TotalMeditations';
+import TotalMeditations from '../total-meditations/TotalMeditations';
+import ApiContext from '../../context/ApiContext';
 
 class Dashboard extends React.Component {
+	static contextType = ApiContext;
+
 	render() {
+		const { meditations } = this.context;
+
+		const minutesTotal = meditations.reduce(
+			(total, meditation) => total + meditation.minutes,
+			0
+		);
+
 		return (
 			<div className='main'>
 				<div className='dashboard'>
@@ -13,7 +23,7 @@ class Dashboard extends React.Component {
 						<button type='submit'>Start New Meditation</button>
 					</div>
 					<div className='minutes'>
-						<h2>You have meditated for 18 minutes!</h2>
+						<h2>You have meditated for {minutesTotal} minutes!</h2>
 					</div>
 
 					<section className='meditations'>

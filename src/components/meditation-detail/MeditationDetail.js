@@ -1,7 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import ApiContext from '../context/ApiContext';
-import store from '../store';
+import ApiContext from '../../context/ApiContext';
 
 class MeditationDetail extends React.Component {
 	// constructor(props) {
@@ -26,7 +24,7 @@ class MeditationDetail extends React.Component {
 	// }
 
 	handleClickDelete = () => {
-		const meditationId = parseInt(this.props.match.params.id);
+		const meditationId = parseInt(this.props.match.params.id, 10);
 		this.context.deleteMeditation(meditationId);
 		this.props.history.push('/dashboard');
 	};
@@ -36,10 +34,8 @@ class MeditationDetail extends React.Component {
 	};
 
 	render() {
-		// const indvMeditation = this.context.meditations.find(
-		// 	meditation => meditation.id === parseInt(this.props.match.params.id)
-		const indvMeditation = store.meditations.find(
-			meditation => meditation.id === parseInt(this.props.match.params.id)
+		const indvMeditation = this.context.meditations.find(
+			meditation => meditation.id === parseInt(this.props.match.params.id, 10)
 		);
 
 		return (
@@ -52,7 +48,7 @@ class MeditationDetail extends React.Component {
 						<h3>Word:</h3>
 						<p>{indvMeditation.description}</p>
 						<h3>Date:</h3>
-						<p>4{indvMeditation.date}</p>
+						<p>{indvMeditation.date}</p>
 						<h3>Minutes this session:</h3>
 						<p>{indvMeditation.minutes}</p>
 					</div>
@@ -82,4 +78,4 @@ class MeditationDetail extends React.Component {
 	}
 }
 
-export default withRouter(MeditationDetail);
+export default MeditationDetail;

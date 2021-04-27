@@ -1,6 +1,6 @@
 import React from 'react';
-import MeditationSummary from '../components/indv-meditation/MeditationSummary';
-import ApiContext from '../context/ApiContext';
+import MeditationSummary from '../indv-meditation/MeditationSummary';
+import ApiContext from '../../context/ApiContext';
 
 class TotalMeditations extends React.Component {
 	static contextType = ApiContext;
