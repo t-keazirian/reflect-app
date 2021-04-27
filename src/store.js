@@ -2,7 +2,7 @@ const meditations = [
 	{
 		id: 1,
 		description: 'Happy',
-		minutes: 3,
+		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
 		date: '4/20/2021',
@@ -18,7 +18,7 @@ const meditations = [
 	{
 		id: 3,
 		description: 'Sad',
-		minutes: 10,
+		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
 		date: '4/20/2021',

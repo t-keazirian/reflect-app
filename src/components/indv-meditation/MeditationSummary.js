@@ -12,7 +12,6 @@ export default function MeditationSummary(props) {
 		<div key={meditation.id} className='meditation-item'>
 			<li key={meditation.id} className='meditation-list-item'>
 				<h4>Description:</h4> <span>{meditation.description}</span>
-				<h4>Minutes Meditated: </h4> <span>{meditation.minutes}</span>
 				<h4>Date Meditated:</h4> <span>{meditation.date}</span>
 				<div className='button-container'>
 					<Link to={`/${meditation.id}`}>
