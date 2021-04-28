@@ -78,12 +78,6 @@ h2 {
 	text-align: center;
 }
 
-div.app {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 section.why,
 section.what,
 section.signup {
@@ -144,11 +138,6 @@ div.med-summary {
 	align-items: center;
 }
 
-h2,
-h3 {
-	margin: 10px;
-}
-
 button[type='submit'].start-med-btn {
 	margin-bottom: 20px;
 	margin-top: 0;
@@ -163,6 +152,28 @@ li.meditation-list-item {
 	align-items: center;
 	justify-content: space-around;
 	margin: 10px;
+	padding: 10px;
+}
+
+/* Meditation Detail */
+div.details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid black;
+	margin: 20px;
+}
+
+div.summary {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+div.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 
 /* Start Meditation */
@@ -267,6 +278,12 @@ div.icons {
 	/* Landing Page */
 	div.landing-page {
 		max-width: 800px;
+	}
+
+	div.app {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	section.why,

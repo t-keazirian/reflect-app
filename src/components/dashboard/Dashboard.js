@@ -17,14 +17,14 @@ class Dashboard extends React.Component {
 		return (
 			<div className='dashboard'>
 				<header>
-					<h1>My Meditation Dashboard</h1>
+					<h1>Meditation Dashboard</h1>
 				</header>
 				<div className='med-summary'>
 					<Link to='/start'>
 						<button type='submit' className='start-med-btn'>Start New Meditation</button>
 					</Link>
-				<h2>You have meditated for {minutesTotal} minutes!</h2>
-				<h3>Total Meditations:</h3>
+				<h2 className='dash-h'>You have meditated for {minutesTotal} minutes!</h2>
+				<h3 className='dash-h'>Total Meditations:</h3>
 				</div>
 				<section className='meditations'>
 					<TotalMeditations />

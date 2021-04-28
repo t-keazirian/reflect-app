@@ -23,19 +23,14 @@ class MeditationDetail extends React.Component {
 		return (
 			<div className='main-meditation'>
 				<header>
-					<h1>Your Meditation Overview</h1>
+					<h1>Your Reflection</h1>
 				</header>
 				<div className='details'>
 					<div className='summary'>
-						<h3>Word:</h3>
-						<p>{indvMeditation.description}</p>
-						<h3>Date:</h3>
 						<p>{indvMeditation.date}</p>
-						<h3>Minutes this session:</h3>
-						<p>{indvMeditation.minutes}</p>
+						<p>{indvMeditation.description}</p>
 					</div>
 					<div className='reflections'>
-						<h3>Reflections:</h3>
 						<p className='reflections-p'>{indvMeditation.reflections}</p>
 					</div>
 				</div>

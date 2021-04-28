@@ -9,7 +9,7 @@ export default function MeditationSummary(props) {
 
 	return (
 		<li key={meditation.id} className='meditation-list-item'>
-			<h4>Date Meditated:</h4> <span>{meditation.date}</span>
+			<span>{meditation.date}</span>
 			<div className='button-container'>
 				<Link to={`/${meditation.id}`}>
 					<button type='button'>See More</button>

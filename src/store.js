@@ -1,7 +1,7 @@
 const meditations = [
 	{
 		id: 1,
-		description: 'Happy',
+		description: 'Happy Healthy Motivated Special Intrigued',
 		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,

@@ -49,9 +49,9 @@ class LandingPage extends React.Component {
 							there's no right or wrong way to do it!
 						</p>
 						<p>
-							After your meditation, you can reflect on how you are feeling and
+							After your meditation, you will reflect on how you feel and
 							jot down any notes or observations. You'll notice with each
-							session, your confidence within yourself will grow.
+							session, your confidence will grow.
 						</p>
 						<p>
 							You can choose to use Reflect during any part of your day - when
@@ -66,7 +66,7 @@ class LandingPage extends React.Component {
 						<p>
 							When you sign up for a Reflect account, you can track your
 							meditation practice. You will see how many minutes you have
-							meditated, as well as journal your "reflections" about each
+							meditated, as well as your "reflections" about each
 							session. You may find yourself coming back to Reflect more and
 							more as you notice internal peace and calm. You have it within you
 							to sit and be with your stillness.
