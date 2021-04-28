@@ -68,7 +68,7 @@ class LandingPage extends React.Component {
 							meditation practice. You will see how many minutes you have
 							meditated, as well as your "reflections" about each
 							session. You may find yourself coming back to Reflect more and
-							more as you notice internal peace and calm. You have it within you
+							more as you notice internal peace and calm. You have it within
 							to sit and be with your stillness.
 						</p>
 						<p>Reflect allows you to harness that power.</p>

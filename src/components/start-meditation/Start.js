@@ -38,14 +38,14 @@ export default function Start() {
 			<div className='timer-wrapper'>
 				<CountdownCircleTimer
 					isPlaying
-					duration={300}
-					colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
+					duration={30}
+					colors={[['#EE2677', 0.2], ['#E87EA1', 0.2], ['#E86252', 0.2], ['#EBB3A9', 0.2], ['#EE7B30']]}
 					onComplete={() => [false, 0]}
 				>
 					{children}
 				</CountdownCircleTimer>
 			</div>
-      <h4>
+      <h4 className='start-h4'>
       “Mindfulness is simply being aware of what is happening right now without wishing it were different; enjoying the pleasant without holding on when it changes (which it will); being with the unpleasant without fearing it will always be this way (which it won't).” – James Baraz
 			</h4>
 		</div>

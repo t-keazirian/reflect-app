@@ -69,13 +69,16 @@ class Reflection extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const { description, mood, reflections } = this.state;
-    const { meditations } = this.context;
+		const date = Date(Date.now());
+		const dateString = date.toString();
+		const { meditations } = this.context;
 		const newMeditation = {
-      id: meditations.length+1,
+			id: meditations.length + 1,
 			description: description.value,
+			minutes: 5,
 			mood: mood.value,
 			reflections: reflections.value,
-      date: Date.now(),
+			date: dateString,
 		};
 		this.context.addMeditation(newMeditation);
 		this.props.history.push('/dashboard');
@@ -91,7 +94,13 @@ class Reflection extends React.Component {
 					<h1>REFLECT</h1>
 				</header>
 				<div className='reflect-box'>
-        <p className='reflections-p'>Take a few moments to reflect. This will help build your mindfulness practice. Resist the urge to form attachments to your thoughts - they are here to pass, not to stay.  Acknowledge them and send them on their way - like cars driving by or waves coming in and out from the sea. </p>
+					<p className='reflections-p'>
+						Take a few moments to reflect. This will help build your mindfulness
+						practice. Resist the urge to form attachments to your thoughts -
+						they are here to pass, not to stay. Acknowledge them and send them
+						on their way - like cars driving by or waves coming in and out from
+						the sea.{' '}
+					</p>
 					<form
 						onSubmit={e => this.handleSubmit(e)}
 						className='reflection-form'
@@ -156,7 +165,8 @@ class Reflection extends React.Component {
 							<h2>Reflections:</h2>
 							<label htmlFor='reflections'></label>
 							<p className='reflections-p'>
-								Write down any thoughts that come to mind as you reflect on today's practice.
+								Write down any thoughts that come to mind as you reflect on
+								today's practice.
 							</p>
 							<textarea
 								name='reflections'
