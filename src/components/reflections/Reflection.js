@@ -91,6 +91,7 @@ class Reflection extends React.Component {
 					<h1>REFLECT</h1>
 				</header>
 				<div className='reflect-box'>
+        <p className='reflections-p'>Take a few moments now to reflect on your emotions, your breathing, and your mindset. This will help build your mindfulness practice. Resist the urge to form attachments to your thoughts - they are here to pass, not to stay.  Acknowledge them and send them on their way - like cars driving by or waves coming in and out from the sea. </p>
 					<form
 						onSubmit={e => this.handleSubmit(e)}
 						className='reflection-form'
@@ -154,11 +155,8 @@ class Reflection extends React.Component {
 						<div className='reflection-text'>
 							<h2>Reflections:</h2>
 							<label htmlFor='reflections'></label>
-							<p>
-								Type any of your thoughts below. This can be an informal,
-								free-form journal entry. Document how the session went overall.
-								Where were your thoughts? How do you feel now? Free your mind of
-								any judgement.
+							<p className='reflections-p'>
+								Now write down any thoughts that come to mind as you reflect on today's practice.
 							</p>
 							<textarea
 								name='reflections'

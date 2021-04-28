@@ -6,8 +6,7 @@ const children = ({ remainingTime }) => {
 	if (remainingTime === 0) {
 		return (
 			<div className='timer'>
-				<p>Your meditation session has ended - </p>
-        <p>Great job!</p>
+				<p className='timer-p'>Your meditation session has ended</p>
 				<Link to='/reflect'>
 					<button type='button'>Reflect</button>
 				</Link>
@@ -39,7 +38,7 @@ export default function Start() {
 			<div className='timer-wrapper'>
 				<CountdownCircleTimer
 					isPlaying
-					duration={300}
+					duration={5}
 					colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
 					onComplete={() => [false, 0]}
 				>

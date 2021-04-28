@@ -127,7 +127,7 @@ button[type='submit'] {
 /* Login */
 
 section.login {
-  text-align: center;
+	text-align: center;
 }
 
 /* Dashboard */
@@ -144,11 +144,12 @@ div.med-summary {
 	align-items: center;
 }
 
-h2, h3 {
+h2,
+h3 {
 	margin: 10px;
 }
 
-button[type=submit].start-med-btn {
+button[type='submit'].start-med-btn {
 	margin-bottom: 20px;
 	margin-top: 0;
 }
@@ -183,6 +184,28 @@ div.timer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+p.timer-p {
+	text-align: center;
+}
+
+/* Reflections */
+div.describe, div.reflection-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+p.reflections-p {
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: center;
+}
+
+div.mood, div.radio {
+	margin-bottom: 20px;
 }
 
 /* Not Found */
@@ -255,6 +278,11 @@ div.icons {
 
 	/* Start Meditation */
 	h4 {
+		max-width: 600px;
+	}
+
+	/* Reflection */
+	p.reflections-p {
 		max-width: 600px;
 	}
 
