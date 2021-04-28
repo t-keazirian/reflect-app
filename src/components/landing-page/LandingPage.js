@@ -41,8 +41,7 @@ class LandingPage extends React.Component {
 					<div className='mid'>
 						<h3>How does it work?</h3>
 						<p>
-							With Reflect, you choose to practice a quiet meditation for 3
-							minutes, 5 minutes, or 10 minutes. During that time, you will
+							With Reflect, you meditate for 5 minutes. That's it! During that time, you will
 							start to feel your body relax, your thoughts begin to quiet, and
 							your heart begin to calm. Rather than a formal meditation, Reflect
 							allows you to re-center and stay present within yourself. Many
@@ -73,6 +72,7 @@ class LandingPage extends React.Component {
 							to sit and be with your stillness.
 						</p>
 						<p>Reflect allows you to harness that power.</p>
+						<p>Click [dashboard] above to try it out!</p>
 					</div>
 				</section>
 			</div>

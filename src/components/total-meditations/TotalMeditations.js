@@ -7,18 +7,13 @@ class TotalMeditations extends React.Component {
 
 	render() {
 		return (
-			<div className='total-meditations'>
-				<div className='meditation-container'>
-					<div className='list'>
-						<ul>
-							{this.context.meditations.map(meditation => (
-								<MeditationSummary
-									meditation={meditation}
-									key={meditation.id}
-								/>
-							))}
-						</ul>
-					</div>
+			<div className='meditation-container'>
+				<div className='list'>
+					<ul className='meditation-ul'>
+						{this.context.meditations.map(meditation => (
+							<MeditationSummary meditation={meditation} key={meditation.id} />
+						))}
+					</ul>
 				</div>
 			</div>
 		);

@@ -9,6 +9,7 @@ import NotFound from './components/notfound/NotFound';
 import SignUp from './components/signup/Signup';
 import Login from './components/login/Login';
 import MeditationDetail from './components/meditation-detail/MeditationDetail';
+import Reflection from './components/reflections/Reflection';
 import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import meditations from './store';
@@ -18,7 +19,7 @@ class App extends React.Component {
 		super();
 		this.state = {
 			meditations: meditations,
-			signedIn: false
+			signedIn: false,
 		};
 	}
 
@@ -38,17 +39,22 @@ class App extends React.Component {
 		this.setState({
 			meditations: newArray,
 		});
+
+		console.log(this.state.meditations);
 	};
 
 	handleAddMeditation = newMeditation => {
+		console.log(newMeditation);
 		this.setState({
-			meditations: [this.state.meditations, newMeditation],
+			meditations: [...this.state.meditations, newMeditation],
 		});
+
+		console.log(this.state.meditations);
 	};
 
 	render() {
 		const contextValue = {
-			meditations: meditations,
+			meditations: this.state.meditations,
 			deleteMeditation: this.handleDeleteMeditation,
 			addMeditation: this.handleAddMeditation,
 		};
@@ -64,6 +70,7 @@ class App extends React.Component {
 							<Route path='/signup' component={SignUp} />
 							<Route path='/login' component={Login} />
 							<Route path='/start' component={Start} />
+							<Route path='/reflect' component={Reflection} />
 							<Route path='/:id' component={MeditationDetail} />
 							<Route component={NotFound} />
 						</Switch>

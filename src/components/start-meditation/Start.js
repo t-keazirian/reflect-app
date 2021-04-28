@@ -1,17 +1,33 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { Link } from 'react-router-dom';
 
-
-const renderTime = ({ remainingTime }) => {
+const children = ({ remainingTime }) => {
 	if (remainingTime === 0) {
-		return <div className='timer'>Your meditation session has ended. Great job!</div>;
-	}
+		return (
+			<div className='timer'>
+				<p>Your meditation session has ended - </p>
+        <p>Great job!</p>
+				<Link to='/reflect'>
+					<button type='button'>Reflect</button>
+				</Link>
+			</div>
+		);
+	} else if (remainingTime === 240 || remainingTime === 180 || remainingTime === 120 || remainingTime === 60 ) {
+    return (
+			<div className='timer'>
+				<p>Breathe</p>
+			</div>
+		);
+  }
+
+	const minutes = Math.floor(remainingTime / 60);
+	const seconds = remainingTime % 60 < 10 ? "0" + remainingTime % 60 : remainingTime % 60;
 
 	return (
 		<div className='timer'>
 			<div className='text'>Remaining</div>
-			<div className='value'>{remainingTime}</div>
-			<div className='text'>seconds</div>
+			<div className='value'>{`${minutes}:${seconds}`}</div>
 		</div>
 	);
 };
@@ -19,46 +35,20 @@ const renderTime = ({ remainingTime }) => {
 export default function Start() {
 	return (
 		<div className='start'>
-			<h1>
-				CountdownCircleTimer
-				<br />
-				React Component
-			</h1>
+			<h1>Mindfulness begins here...</h1>
 			<div className='timer-wrapper'>
 				<CountdownCircleTimer
 					isPlaying
-					duration={180}
+					duration={300}
 					colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
-					onComplete={() => [false, 1000]}
+					onComplete={() => [false, 0]}
 				>
-					{renderTime}
+					{children}
 				</CountdownCircleTimer>
 			</div>
-        
+      <h4>
+      “Mindfulness is simply being aware of what is happening right now without wishing it were different; enjoying the pleasant without holding on when it changes (which it will); being with the unpleasant without fearing it will always be this way (which it won't).” – James Baraz
+			</h4>
 		</div>
 	);
 }
-
-/*
-
-class Start extends React.Componet {
-	constructor() {
-		super();
-		this.state = {
-			minutes: '',
-			seconds: '',
-		};
-	}
-
-  render() {
-
-   
-    
-    return (
-
-    )
-  }
-}
-
-export default Start;
-*/

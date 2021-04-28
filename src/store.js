@@ -5,7 +5,7 @@ const meditations = [
 		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-		date: '4/20/2021',
+		date: '4/19/2021',
 	},
 	{
 		id: 2,
@@ -13,7 +13,7 @@ const meditations = [
 		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-		date: '4/20/2021',
+		date: '4/18/2021',
 	},
 	{
 		id: 3,
@@ -21,7 +21,7 @@ const meditations = [
 		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-		date: '4/20/2021',
+		date: '4/17/2021',
 	},
 	{
 		id: 4,
@@ -29,7 +29,7 @@ const meditations = [
 		minutes: 5,
 		reflections: `Lorem ipsum dolor, sit amet consectetur
     adipisicing elit. Ipsum voluptatum vitae atque animi nesciunt illo, eius harum. Libero at minus debitis modi id unde est commodi! Eligendi esse nisi accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit laudantium atque a distinctio, numquam incidunt nemo, neque nihil id tempora ad. Deleniti porro voluptates nulla itaque suscipit optio iure dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-		date: '4/20/2021',
+		date: '4/16/2021',
 	},
 ];
 

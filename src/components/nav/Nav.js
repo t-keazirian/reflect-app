@@ -1,4 +1,5 @@
 import {
+	faList,
 	faSignInAlt,
 	faSpa,
 	faUserPlus,
@@ -7,9 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-// if not logged in, show log in
-// if logged in, show dashboard
 export default function Nav() {
 	return (
 		<header>
@@ -19,6 +17,10 @@ export default function Nav() {
 					Reflect
 				</Link>
 				<div className='nav'>
+					<Link className='dashboard-link' to='/dashboard'>
+						<FontAwesomeIcon className='font-awesome' icon={faList} size='1x' />
+						Dashboard
+					</Link>
 					<Link className='login-link' to='/login'>
 						<FontAwesomeIcon
 							className='font-awesome'

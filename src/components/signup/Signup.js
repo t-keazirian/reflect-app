@@ -1,6 +1,14 @@
 import React from 'react';
 
 class SignUp extends React.Component {
+	handleSubmit = e => {
+		e.preventDefault();
+		alert(
+			'This app is in beta testing. Click on Dashboard above to try it out!'
+		);
+		e.target.reset();
+	};
+
 	render() {
 		return (
 			<>
@@ -8,15 +16,15 @@ class SignUp extends React.Component {
 					<div className='signup-div'>
 						<h1>Sign up for your free Reflect account</h1>
 						<p>
-							Your meditation journey starts here. Committing to as little as 3
-							minutes a day <strong>will</strong> change your life.{' '}
+							Your meditation journey starts here. Committing to 5 minutes a day{' '}
+							<strong>will</strong> change your life.
 						</p>
 					</div>
 				</section>
 				<section className='signup-div'>
 					<div className='form'>
-						<form>
-							<label for='email'>Email Address:</label>
+						<form onSubmit={this.handleSubmit}>
+							<label htmlFor='email'>Email Address:</label>
 							<input
 								type='email'
 								name='email'
@@ -25,7 +33,7 @@ class SignUp extends React.Component {
 								required
 								aria-required
 							/>
-							<label for='password'>Password:</label>
+							<label htmlFor='password'>Password:</label>
 							<input
 								type='password'
 								name='password'

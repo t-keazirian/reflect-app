@@ -2,26 +2,8 @@ import React from 'react';
 import ApiContext from '../../context/ApiContext';
 
 class MeditationDetail extends React.Component {
-	// constructor(props) {
-	//   super(props);
-	//   this.state = {
-	//     id: '',
-	//     description: '',
-	//     minutes: '',
-	//     reflections: '',
-	//     date: ''
-	//   }
-	// }
 
 	static contextType = ApiContext;
-
-	// componentDidMount() {
-	//   const meditationId = this.props.match.params.id;
-	//   const {meditation} = this.context.meditations;
-	//   this.setState({
-
-	//   })
-	// }
 
 	handleClickDelete = () => {
 		const meditationId = parseInt(this.props.match.params.id, 10);
