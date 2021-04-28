@@ -38,7 +38,7 @@ export default function Start() {
 			<div className='timer-wrapper'>
 				<CountdownCircleTimer
 					isPlaying
-					duration={30}
+					duration={300}
 					colors={[['#EE2677', 0.2], ['#E87EA1', 0.2], ['#E86252', 0.2], ['#EBB3A9', 0.2], ['#EE7B30']]}
 					onComplete={() => [false, 0]}
 				>
