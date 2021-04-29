@@ -29,16 +29,11 @@ class Reflection extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const { description, current_mood, notes } = this.state;
-		// const date = Date(Date.now());
-		// const dateString = date.toString();
-		// const { meditations } = this.context;
 		const newMeditation = {
-			// id: meditations.length + 1,
 			description: description.value,
 			minutes: 5,
 			current_mood: current_mood.value,
 			notes: notes.value,
-			// date: dateString,
 		};
 
 		fetch(`${config.API_BASE_URL}`, {
