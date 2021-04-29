@@ -12,24 +12,38 @@ import MeditationDetail from './components/meditation-detail/MeditationDetail';
 import Reflection from './components/reflections/Reflection';
 import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
-import meditations from './store';
+import config from './config';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			meditations: meditations,
+			meditations: [],
 			signedIn: false,
 		};
 	}
 
 	// once they submit form, set state signedIn to true
 
-	// componentDidMount() {
-	// 	this.setState({
-	// 		meditations: store,
-	// 	});
-	// }
+	componentDidMount() {
+		fetch(`${config.API_BASE_URL}/reflections`, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json'
+			},
+		})
+		.then(res => {
+			if (!res.ok) {
+				return res.json().then(error => Promise.reject(error))
+			}
+			return res.json()
+		})
+		.then(meditations => {
+			this.setState({
+				meditations: meditations
+			})
+		})
+	}
 
 	handleDeleteMeditation = meditationId => {
 		const newArray = this.state.meditations.filter(
