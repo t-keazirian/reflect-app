@@ -3,6 +3,7 @@ import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApiContext from '../../context/ApiContext';
 import ValidationError from '../validation-error/ValidationError';
+import config from '../../config';
 
 class Reflection extends React.Component {
 	constructor() {
@@ -24,6 +25,40 @@ class Reflection extends React.Component {
 	}
 
 	static contextType = ApiContext;
+
+	handleSubmit = e => {
+		e.preventDefault();
+		const { description, current_mood, notes } = this.state;
+		// const date = Date(Date.now());
+		// const dateString = date.toString();
+		// const { meditations } = this.context;
+		const newMeditation = {
+			// id: meditations.length + 1,
+			description: description.value,
+			minutes: 5,
+			current_mood: current_mood.value,
+			notes: notes.value,
+			// date: dateString,
+		};
+
+		fetch(`${config.API_BASE_URL}`, {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json',
+			},
+			body: JSON.stringify(newMeditation),
+		})
+			.then(res => {
+				if (!res.ok) {
+					return res.json().then(error => Promise.reject(error));
+				}
+				return res.json();
+			})
+			.then(meditation => {
+				this.context.addMeditation(meditation);
+				this.props.history.push('/dashboard');
+			});
+	};
 
 	updateDescription = description => {
 		this.setState({
@@ -64,24 +99,6 @@ class Reflection extends React.Component {
 		if (notes.value === '') {
 			return 'Please reflect on your meditation session.';
 		}
-	};
-
-	handleSubmit = e => {
-		e.preventDefault();
-		const { description, current_mood, notes } = this.state;
-		const date = Date(Date.now());
-		const dateString = date.toString();
-		const { meditations } = this.context;
-		const newMeditation = {
-			id: meditations.length + 1,
-			description: description.value,
-			minutes: 5,
-			current_mood: current_mood.value,
-			notes: notes.value,
-			date: dateString,
-		};
-		this.context.addMeditation(newMeditation);
-		this.props.history.push('/dashboard');
 	};
 
 	render() {
@@ -151,7 +168,12 @@ class Reflection extends React.Component {
 									size='2x'
 								/>
 							</label>
-							<input type='radio' value='happy' name='current_mood' id='happy' />
+							<input
+								type='radio'
+								value='happy'
+								name='current_mood'
+								id='happy'
+							/>
 							<label htmlFor='happy'>
 								<FontAwesomeIcon
 									className='font-awesome'
@@ -174,7 +196,7 @@ class Reflection extends React.Component {
 								cols='40'
 								rows='10'
 								value={notes.value}
-								onChange={e => this.updateReflections(e.target.value)}
+								onChange={e => this.updateNotes(e.target.value)}
 								required
 							></textarea>
 

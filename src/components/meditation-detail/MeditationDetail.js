@@ -1,6 +1,8 @@
 import React from 'react';
 import config from '../../config';
 import ApiContext from '../../context/ApiContext';
+import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class MeditationDetail extends React.Component {
 	constructor(props) {
@@ -10,6 +12,7 @@ class MeditationDetail extends React.Component {
 			id: '',
 			description: '',
 			minutes: 5,
+			current_mood: '',
 			notes: '',
 			date: '',
 		};
@@ -36,6 +39,7 @@ class MeditationDetail extends React.Component {
 					id: meditation.id,
 					description: meditation.description,
 					minutes: 5,
+					current_mood: meditation.current_mood,
 					notes: meditation.notes,
 					date: meditation.date,
 				});
@@ -61,7 +65,22 @@ class MeditationDetail extends React.Component {
 	};
 
 	render() {
-		const { id, description, notes, date } = this.state;
+		const { id, description, notes, current_mood, date } = this.state;
+
+		let smiley;
+		if (current_mood === 'happy') {
+			smiley = (
+				<FontAwesomeIcon className='font-awesome' icon={faSmile} size='2x' />
+			);
+		} else if (current_mood === 'meh') {
+			smiley = (
+				<FontAwesomeIcon className='font-awesome' icon={faMeh} size='2x' />
+			);
+		} else if (current_mood === 'sad') {
+			smiley = (
+				<FontAwesomeIcon icon={faFrown} size='2x' className='font-awesome' />
+			);
+		}
 
 		return (
 			<div className='main-meditation'>
@@ -71,6 +90,8 @@ class MeditationDetail extends React.Component {
 				<div key={id} className='details'>
 					<div className='summary'>
 						<p>{date}</p>
+						{/* <p>{new Intl.DateTimeFormat('en-US', {dateStyle: 'short'}).format(date)}</p> */}
+						<p>{smiley}</p>
 						<p>{description}</p>
 					</div>
 					<div className='reflections'>
