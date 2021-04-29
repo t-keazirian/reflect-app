@@ -12,11 +12,11 @@ class Reflection extends React.Component {
 				value: '',
 				touched: false,
 			},
-			mood: {
+			current_mood: {
 				value: '',
 				touched: false,
 			},
-			reflections: {
+			notes: {
 				value: '',
 				touched: false,
 			},
@@ -34,19 +34,19 @@ class Reflection extends React.Component {
 		});
 	};
 
-	updateMood = mood => {
+	updateMood = current_mood => {
 		this.setState({
-			mood: {
-				value: mood,
+			current_mood: {
+				value: current_mood,
 				touched: true,
 			},
 		});
 	};
 
-	updateReflections = reflections => {
+	updateNotes = notes => {
 		this.setState({
-			reflections: {
-				value: reflections,
+			notes: {
+				value: notes,
 				touched: true,
 			},
 		});
@@ -59,16 +59,16 @@ class Reflection extends React.Component {
 		}
 	};
 
-	validateReflections = () => {
-		const { reflections } = this.state;
-		if (reflections.value === '') {
+	validateNotes = () => {
+		const { notes } = this.state;
+		if (notes.value === '') {
 			return 'Please reflect on your meditation session.';
 		}
 	};
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const { description, mood, reflections } = this.state;
+		const { description, current_mood, notes } = this.state;
 		const date = Date(Date.now());
 		const dateString = date.toString();
 		const { meditations } = this.context;
@@ -76,8 +76,8 @@ class Reflection extends React.Component {
 			id: meditations.length + 1,
 			description: description.value,
 			minutes: 5,
-			mood: mood.value,
-			reflections: reflections.value,
+			current_mood: current_mood.value,
+			notes: notes.value,
 			date: dateString,
 		};
 		this.context.addMeditation(newMeditation);
@@ -85,9 +85,9 @@ class Reflection extends React.Component {
 	};
 
 	render() {
-		const { description, reflections } = this.state;
+		const { description, notes } = this.state;
 		const descriptionError = this.validateDescription();
-		const reflectionsError = this.validateReflections();
+		const notesError = this.validateNotes();
 		return (
 			<div>
 				<header>
@@ -99,7 +99,7 @@ class Reflection extends React.Component {
 						practice. Resist the urge to form attachments to your thoughts -
 						they are here to pass, not to stay. Acknowledge them and send them
 						on their way - like cars driving by or waves coming in and out from
-						the sea.{' '}
+						the sea.
 					</p>
 					<form
 						onSubmit={e => this.handleSubmit(e)}
@@ -132,27 +132,27 @@ class Reflection extends React.Component {
 							<input
 								type='radio'
 								value='sad'
-								name='mood'
-								id='sad-face'
+								name='current_mood'
+								id='sad'
 								required
 							/>
-							<label htmlFor='sad-face'>
+							<label htmlFor='sad'>
 								<FontAwesomeIcon
 									icon={faFrown}
 									size='2x'
 									className='font-awesome'
 								/>
 							</label>
-							<input type='radio' value='avg' name='mood' id='avg-face' />
-							<label htmlFor='avg-face'>
+							<input type='radio' value='meh' name='current_mood' id='meh' />
+							<label htmlFor='meh'>
 								<FontAwesomeIcon
 									className='font-awesome'
 									icon={faMeh}
 									size='2x'
 								/>
 							</label>
-							<input type='radio' value='smiley' name='mood' id='smiley' />
-							<label htmlFor='smiley'>
+							<input type='radio' value='happy' name='current_mood' id='happy' />
+							<label htmlFor='happy'>
 								<FontAwesomeIcon
 									className='font-awesome'
 									icon={faSmile}
@@ -173,14 +173,12 @@ class Reflection extends React.Component {
 								id='reflections'
 								cols='40'
 								rows='10'
-								value={reflections.value}
+								value={notes.value}
 								onChange={e => this.updateReflections(e.target.value)}
 								required
 							></textarea>
 
-							{reflections.touched && (
-								<ValidationError message={reflectionsError} />
-							)}
+							{notes.touched && <ValidationError message={notesError} />}
 						</div>
 						<button type='submit'>Submit</button>
 					</form>

@@ -31,7 +31,7 @@ class MeditationDetail extends React.Component {
 						<p>{indvMeditation.description}</p>
 					</div>
 					<div className='reflections'>
-						<p className='reflections-p'>{indvMeditation.reflections}</p>
+						<p className='reflections-p'>{indvMeditation.notes}</p>
 					</div>
 				</div>
 				<div className='buttons'>

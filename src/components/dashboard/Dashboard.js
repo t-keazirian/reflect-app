@@ -13,6 +13,20 @@ class Dashboard extends React.Component {
 			(total, meditation) => total + meditation.minutes,
 			0
 		);
+		
+		let minutesMessage;
+		if (minutesTotal === 0) {
+			minutesMessage = <h2 className='dash-h'>Select Start New Meditation above to practice your first meditation!</h2>
+		} else {
+			minutesMessage = <h2 className='dash-h'>You have meditated for {minutesTotal} minutes!</h2>
+		}
+
+		let totalHeader;
+		if (minutesTotal === 0) {
+			totalHeader = <h3 className='dash-h'>Your list of meditations will appear below...</h3>
+		} else {
+			totalHeader = <h3 className='dash-h'>Total Meditations:</h3>
+		}
 
 		return (
 			<div className='dashboard'>
@@ -23,8 +37,8 @@ class Dashboard extends React.Component {
 					<Link to='/start'>
 						<button type='submit' className='start-med-btn'>Start New Meditation</button>
 					</Link>
-				<h2 className='dash-h'>You have meditated for {minutesTotal} minutes!</h2>
-				<h3 className='dash-h'>Total Meditations:</h3>
+				{minutesMessage}
+				{totalHeader}
 				</div>
 				<section className='meditations'>
 					<TotalMeditations />

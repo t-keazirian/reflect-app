@@ -53,8 +53,6 @@ class App extends React.Component {
 		this.setState({
 			meditations: newArray,
 		});
-
-		console.log(this.state.meditations);
 	};
 
 	handleAddMeditation = newMeditation => {
@@ -85,7 +83,7 @@ class App extends React.Component {
 							<Route path='/login' component={Login} />
 							<Route path='/start' component={Start} />
 							<Route path='/reflect' component={Reflection} />
-							<Route path='/:id' component={MeditationDetail} />
+							<Route path='/meditation/:id' component={MeditationDetail} />
 							<Route component={NotFound} />
 						</Switch>
 						<Footer />
