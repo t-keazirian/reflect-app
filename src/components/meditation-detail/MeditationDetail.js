@@ -1,13 +1,58 @@
 import React from 'react';
+import config from '../../config';
 import ApiContext from '../../context/ApiContext';
 
 class MeditationDetail extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			// how would I add current mood? look at SQL
+			id: '',
+			description: '',
+			minutes: 5,
+			notes: '',
+			date: '',
+		};
+	}
 
 	static contextType = ApiContext;
 
+	componentDidMount() {
+		const meditationId = this.props.match.params.id;
+		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+			},
+		})
+			.then(res => {
+				if (!res.ok) {
+					return res.json().then(error => Promise.reject(error));
+				}
+				return res.json();
+			})
+			.then(meditation => {
+				this.setState({
+					id: meditation.id,
+					description: meditation.description,
+					minutes: 5,
+					notes: meditation.notes,
+					date: meditation.date,
+				});
+			});
+	}
+
 	handleClickDelete = () => {
 		const meditationId = parseInt(this.props.match.params.id, 10);
-		this.context.deleteMeditation(meditationId);
+
+		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+			method: 'DELETE',
+			headers: {
+				'content-type': 'application/json',
+			},
+		}).then(() => {
+			this.context.deleteMeditation(meditationId);
+		});
 		this.props.history.push('/dashboard');
 	};
 
@@ -16,22 +61,20 @@ class MeditationDetail extends React.Component {
 	};
 
 	render() {
-		const indvMeditation = this.context.meditations.find(
-			meditation => meditation.id === parseInt(this.props.match.params.id, 10)
-		);
+		const { id, description, notes, date } = this.state;
 
 		return (
 			<div className='main-meditation'>
 				<header>
 					<h1>Your Reflection</h1>
 				</header>
-				<div className='details'>
+				<div key={id} className='details'>
 					<div className='summary'>
-						<p>{indvMeditation.date}</p>
-						<p>{indvMeditation.description}</p>
+						<p>{date}</p>
+						<p>{description}</p>
 					</div>
 					<div className='reflections'>
-						<p className='reflections-p'>{indvMeditation.notes}</p>
+						<p className='reflections-p'>{notes}</p>
 					</div>
 				</div>
 				<div className='buttons'>

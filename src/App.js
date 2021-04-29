@@ -26,7 +26,7 @@ class App extends React.Component {
 	// once they submit form, set state signedIn to true
 
 	componentDidMount() {
-		fetch(`${config.API_BASE_URL}/reflections`, {
+		fetch(`${config.API_BASE_URL}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json'
