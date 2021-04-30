@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
 		return (
 			<div className='dashboard'>
 				<header>
-					<h1>Meditation Dashboard</h1>
+					<h1 className='dash-h'>Meditation Dashboard</h1>
 				</header>
 				<div className='med-summary'>
 					<Link to='/start'>

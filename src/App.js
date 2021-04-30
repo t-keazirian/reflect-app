@@ -13,6 +13,7 @@ import Reflection from './components/reflections/Reflection';
 import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import config from './config';
+// import MoodSearch from './search';
 
 class App extends React.Component {
 	constructor() {

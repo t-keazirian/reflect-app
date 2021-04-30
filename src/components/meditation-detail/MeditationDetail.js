@@ -3,12 +3,12 @@ import config from '../../config';
 import ApiContext from '../../context/ApiContext';
 import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Moment from 'react-moment';
 
 class MeditationDetail extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// how would I add current mood? look at SQL
 			id: '',
 			description: '',
 			minutes: 5,
@@ -89,8 +89,9 @@ class MeditationDetail extends React.Component {
 				</header>
 				<div key={id} className='details'>
 					<div className='summary'>
-						<p>{date}</p>
-						{/* <p>{new Intl.DateTimeFormat('en-US', {dateStyle: 'short'}).format(date)}</p> */}
+						<p>
+							<Moment format='dddd MMM D YYYY'>{date}</Moment>
+						</p>
 						<p>{smiley}</p>
 						<p>{description}</p>
 					</div>

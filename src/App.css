@@ -5,8 +5,13 @@
 html,
 body {
 	height: 100%;
-	background-color: #f1f2eb;
+	background-color: #f0f7ee;
 	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+div.app {
+	color: #1D2F6F;
 }
 
 /* Nav */
@@ -14,7 +19,7 @@ body {
 nav {
 	padding-bottom: 20px;
 	padding-top: 20px;
-	background-color: #89ac55;
+	background-color: #79ADDC;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,9 +30,48 @@ div.nav {
 	padding-top: 10px;
 }
 
+/* Icons */
+
 .fa-1x,
 .fa-2x {
 	margin-right: 5px;
+	/* color: #89ac55; */
+	color: #FCF5C7;
+}
+
+svg.svg-inline--fa.fa-github.fa-w-16.fa-2x.font-awesome,
+svg.svg-inline--fa.fa-linkedin.fa-w-14.fa-2x.font-awesome {
+	color: #f1f2eb;
+}
+
+svg.svg-inline--fa.fa-smile.fa-w-16.fa-2x.font-awesome,
+svg.svg-inline--fa.fa-meh.fa-w-16.fa-2x.font-awesome,
+svg.svg-inline--fa.fa-frown.fa-w-16.fa-2x.font-awesome {
+	color: #1D2F6F;
+}
+
+/* Buttons */
+button {
+	font-family: 'Montserrat', sans-serif;
+	margin: 5px;
+	background-color: #fbd574;
+	color: #1D2F6F;
+	cursor: pointer;
+	border-radius: 28px;
+	padding: 10px 15px;
+	font-weight: bolder;
+	border: none;
+	box-shadow: 3px 3px 3px #f2b880;
+}
+
+button:hover {
+	color: #4a4a48;
+	box-shadow: 5px 5px 5px #FA9F42;
+}
+
+button:active {
+	box-shadow: 0 0 0 white;
+	margin: 6px 10px 2px 10px;
 }
 
 /* Links */
@@ -42,11 +86,11 @@ a:visited {
 }
 
 a.meditate-link:link {
-	color: blue;
+	color: #89ac55;
 }
 
 a.meditate-link:visited {
-	color: blue;
+	color: #89ac55;
 }
 
 a.homepage-link {
@@ -112,10 +156,14 @@ label {
 input[type='email'],
 input[type='password'] {
 	margin: 5px;
+	border-radius: 5px;
+	padding: 4px;
+	border: 1px solid #1D2F6F;
 }
 
 button[type='submit'] {
 	margin-top: 10px;
+	font-family: 'Montserrat', sans-serif;
 }
 
 /* Login */
@@ -143,16 +191,36 @@ button[type='submit'].start-med-btn {
 	margin-top: 0;
 }
 
+h1.dash-h {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 /* Meditation Summary */
 
 li.meditation-list-item {
 	list-style-type: none;
-	border: 1px solid black;
+	background: rgba(137, 172, 85, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	/* background: rgba( 255, 192, 159, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
 	margin: 10px;
 	padding: 10px;
+}
+
+span {
+	padding-bottom: 10px;
 }
 
 /* Meditation Detail */
@@ -160,7 +228,12 @@ div.details {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid black;
+	background: rgba(137, 172, 85, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 	margin: 20px;
 }
 
@@ -203,7 +276,8 @@ p.timer-p {
 }
 
 /* Reflections */
-div.describe, div.reflection-text {
+div.describe,
+div.reflection-text {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -216,7 +290,8 @@ p.reflections-p {
 	text-align: center;
 }
 
-div.mood, div.radio {
+div.mood,
+div.radio {
 	margin-bottom: 20px;
 }
 
@@ -239,7 +314,8 @@ p.p-footer {
 }
 
 footer {
-	background-color: #89ac55;
+	/* background-color: #89ac55; */
+	background-color: #79ADDC;
 	color: #ecf2e6;
 	width: 100%;
 	padding-top: 10px;

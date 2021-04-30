@@ -1,3 +1,5 @@
+// https://dev.to/sage911/how-to-write-a-search-component-with-suggestions-in-react-d20
+
 import React from 'react';
 import config from './config';
 import ApiContext from './context/ApiContext';
@@ -41,9 +43,29 @@ class MoodSearch extends React.Component {
 			});
 	};
 
+	handleReset() {
+		fetch(`${config.API_BASE_URL}`, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+			},
+		})
+			.then(res => {
+				if (!res.ok) {
+					return res.json().then(error => Promise.reject(error));
+				}
+				return res.json();
+			})
+			.then(meditations => {
+				this.setState({
+					meditations: meditations,
+				});
+			});
+	};
+
 	render() {
 		const { search, meditations } = this.state;
-    console.log(meditations);
+		console.log(meditations);
 		return (
 			<div className='search'>
 				<form onSubmit={this.handleSearchSubmit}>
@@ -61,7 +83,9 @@ class MoodSearch extends React.Component {
 					</select>
 					<button type='submit'>Search</button>
 				</form>
-        {/* how to display the search results? */}
+        
+				<button type='submit' onClick={this.handleReset}>Reset</button>
+				{/* how to display the search results? */}
 			</div>
 		);
 	}
