@@ -92,7 +92,6 @@ class EditMeditation extends React.Component {
 				if (!res.ok) {
 					return res.json().then(error => Promise.reject(error));
 				}
-				return res.json();
 			})
 			.then(() => {
 				this.context.editMeditation(editedMeditation);
