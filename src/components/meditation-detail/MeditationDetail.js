@@ -4,6 +4,7 @@ import ApiContext from '../../context/ApiContext';
 import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
 class MeditationDetail extends React.Component {
 	constructor(props) {
@@ -107,6 +108,11 @@ class MeditationDetail extends React.Component {
 					>
 						Go Back
 					</button>
+					<Link to={`/edit/${id}`}>
+						<button type='submit' className='delete-btn'>
+							Edit
+						</button>
+					</Link>
 					<button
 						type='submit'
 						className='delete-btn'

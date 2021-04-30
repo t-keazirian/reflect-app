@@ -13,6 +13,7 @@ import Reflection from './components/reflections/Reflection';
 import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import config from './config';
+import EditMeditation from './components/edit/EditMeditation';
 // import MoodSearch from './search';
 
 class App extends React.Component {
@@ -65,11 +66,28 @@ class App extends React.Component {
 		console.log(this.state.meditations);
 	};
 
+	handleEditMeditation = updatedMeditation => {
+		const newMeditationArray = this.state.meditations.map(meditation => {
+			if (meditation.id === updatedMeditation.id) {
+				meditation.description = updatedMeditation.description;
+				meditation.current_mood = updatedMeditation.current_mood;
+				meditation.notes = updatedMeditation.notes;
+				meditation.date = updatedMeditation.date;
+				meditation.minutes = updatedMeditation.minutes;
+			}
+			return meditation;
+		});
+		this.setState({
+			meditations: newMeditationArray,
+		});
+	};
+
 	render() {
 		const contextValue = {
 			meditations: this.state.meditations,
 			deleteMeditation: this.handleDeleteMeditation,
 			addMeditation: this.handleAddMeditation,
+			editMeditation: this.handleEditMeditation,
 		};
 
 		return (
@@ -84,6 +102,7 @@ class App extends React.Component {
 							<Route path='/login' component={Login} />
 							<Route path='/start' component={Start} />
 							<Route path='/reflect' component={Reflection} />
+							<Route path='/edit/:id' component={EditMeditation} />
 							<Route path='/meditation/:id' component={MeditationDetail} />
 							<Route component={NotFound} />
 						</Switch>
