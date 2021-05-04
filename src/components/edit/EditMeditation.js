@@ -112,7 +112,7 @@ class EditMeditation extends React.Component {
 							<Moment format='dddd MMM D YYYY'>{date}</Moment>
 						</p>
 						<label htmlFor='description'></label>
-						<h2>Change description:</h2>
+						<h2>Edit description:</h2>
 						<input
 							type='text'
 							name='description'
@@ -164,8 +164,7 @@ class EditMeditation extends React.Component {
 							<h2>Reflections:</h2>
 							<label htmlFor='reflections'></label>
 							<p className='reflections-p'>
-								Write down any thoughts that come to mind as you reflect on
-								today's practice.
+								Edit your reflection:
 							</p>
 							<textarea
 								name='reflections'
