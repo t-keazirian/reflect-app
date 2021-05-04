@@ -14,6 +14,7 @@ import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import config from './config';
 import EditMeditation from './components/edit/EditMeditation';
+import { compareDesc } from 'date-fns';
 // import MoodSearch from './search';
 
 class App extends React.Component {
@@ -41,8 +42,11 @@ class App extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
+				console.log(meditations);
 				this.setState({
-					meditations: meditations,
+					meditations: meditations.sort((a, b) =>
+						compareDesc(new Date(a.date), new Date(b.date))
+					),
 				});
 			});
 	}
@@ -51,7 +55,6 @@ class App extends React.Component {
 		const newArray = this.state.meditations.filter(
 			meditation => meditation.id !== meditationId
 		);
-		console.log(newArray);
 		this.setState({
 			meditations: newArray,
 		});
@@ -62,8 +65,6 @@ class App extends React.Component {
 		this.setState({
 			meditations: [...this.state.meditations, newMeditation],
 		});
-
-		console.log(this.state.meditations);
 	};
 
 	handleEditMeditation = updatedMeditation => {
