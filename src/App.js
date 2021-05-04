@@ -16,6 +16,7 @@ import config from './config';
 import EditMeditation from './components/edit/EditMeditation';
 import { compareDesc } from 'date-fns';
 // import MoodSearch from './search';
+// review MoodSearch and how to implement
 
 class App extends React.Component {
 	constructor() {
@@ -44,9 +45,7 @@ class App extends React.Component {
 			.then(meditations => {
 				console.log(meditations);
 				this.setState({
-					meditations: meditations.sort((a, b) =>
-						compareDesc(new Date(a.date), new Date(b.date))
-					),
+					meditations: this.sortDatesDescending(meditations),
 				});
 			});
 	}
@@ -63,8 +62,17 @@ class App extends React.Component {
 	handleAddMeditation = newMeditation => {
 		console.log(newMeditation);
 		this.setState({
-			meditations: [...this.state.meditations, newMeditation],
+			meditations: this.sortDatesDescending([
+				...this.state.meditations,
+				newMeditation,
+			]),
 		});
+	};
+
+	sortDatesDescending = meditations => {
+		return meditations.sort((a, b) =>
+			compareDesc(new Date(a.date), new Date(b.date))
+		);
 	};
 
 	handleEditMeditation = updatedMeditation => {
