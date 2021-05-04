@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Moment from 'react-moment';
+import { format } from 'date-fns';
 
 class MeditationSummary extends React.Component {
 	render() {
@@ -23,17 +23,10 @@ class MeditationSummary extends React.Component {
 			);
 		}
 
-		// const parsedDate = Date.parse(meditation.date);
-		// console.log(parsedDate);
-
-		// const formattedDate = format(parsedDate, 'mm/dd/yyyy');
-		// console.log(formattedDate);
 		return (
 			<div>
 				<li key={meditation.id} className='meditation-list-item'>
-					<span>
-						<Moment format='dddd MMM D YYYY'>{meditation.date}</Moment>
-					</span>
+					<span>{format(new Date(meditation.date), 'EEEE MM/dd/yyyy')}</span>
 					<span>{smiley}</span>
 					<div className='button-container'>
 						<Link to={`/meditation/${meditation.id}`}>

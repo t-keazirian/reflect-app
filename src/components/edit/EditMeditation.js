@@ -3,7 +3,7 @@ import ApiContext from '../../context/ApiContext';
 import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import config from '../../config';
-import Moment from 'react-moment';
+import { format } from 'date-fns';
 
 class EditMeditation extends React.Component {
 	constructor(props) {
@@ -14,7 +14,7 @@ class EditMeditation extends React.Component {
 			minutes: 5,
 			notes: '',
 			current_mood: '',
-			date: '',
+			date: null,
 		};
 	}
 
@@ -35,13 +35,14 @@ class EditMeditation extends React.Component {
 				return res.json();
 			})
 			.then(meditation => {
+				console.log(meditation);
 				this.setState({
 					id: meditation.id,
 					description: meditation.description,
 					minutes: 5,
 					current_mood: meditation.current_mood,
 					notes: meditation.notes,
-					date: meditation.date,
+					date: new Date(meditation.date),
 				});
 			});
 	}
@@ -108,9 +109,7 @@ class EditMeditation extends React.Component {
 				</header>
 				<div key={id} className='details'>
 					<form className='summary' onSubmit={this.handleSubmit}>
-						<p>
-							<Moment format='dddd MMM D YYYY'>{date}</Moment>
-						</p>
+					<p>{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}</p>
 						<label htmlFor='description'></label>
 						<h2>Edit description:</h2>
 						<input
@@ -163,9 +162,7 @@ class EditMeditation extends React.Component {
 						<div className='reflection-text'>
 							<h2>Reflections:</h2>
 							<label htmlFor='reflections'></label>
-							<p className='reflections-p'>
-								Edit your reflection:
-							</p>
+							<p className='reflections-p'>Edit your reflection:</p>
 							<textarea
 								name='reflections'
 								id='reflections'

@@ -3,8 +3,8 @@ import config from '../../config';
 import ApiContext from '../../context/ApiContext';
 import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
 class MeditationDetail extends React.Component {
 	constructor(props) {
@@ -90,9 +90,7 @@ class MeditationDetail extends React.Component {
 				</header>
 				<div key={id} className='details'>
 					<div className='summary'>
-						<p>
-							<Moment format='dddd MMM D YYYY'>{date}</Moment>
-						</p>
+						<p>{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}</p>
 						<p>{smiley}</p>
 						<p>{description}</p>
 					</div>
