@@ -119,7 +119,7 @@ class Reflection extends React.Component {
 					>
 						<div className='describe'>
 							<label htmlFor='description'></label>
-							<h2>Describe your session in a few words:</h2>
+							<h2 className='describe-h2'>Describe your session in a few words:</h2>
 							<input
 								type='text'
 								name='description'

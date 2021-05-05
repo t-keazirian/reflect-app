@@ -1,6 +1,26 @@
 import React from 'react';
 
 class Login extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			email: '',
+			password: '',
+		};
+	}
+
+	updateEmail = e => {
+		this.setState({
+			email: e.target.value,
+		});
+	};
+
+	updatePassword = e => {
+		this.setState({
+			password: e.target.value,
+		});
+	};
+
 	handleSubmit = e => {
 		e.preventDefault();
 		alert(
@@ -9,6 +29,7 @@ class Login extends React.Component {
 		e.target.reset();
 	};
 	render() {
+		const { email, password } = this.state;
 		return (
 			<section className='login'>
 				<div className='login'>
@@ -20,7 +41,9 @@ class Login extends React.Component {
 								type='email'
 								name='email'
 								id='email'
-								placeholder='type your email here'
+								placeholder='Email'
+								value={email}
+								onChange={this.updateEmail}
 								required
 								aria-required
 							/>
@@ -29,7 +52,9 @@ class Login extends React.Component {
 								type='password'
 								name='password'
 								id='password'
-								placeholder='type your password here'
+								placeholder='Password'
+								value={password}
+								onChange={this.updatePassword}
 								required
 								aria-required
 							/>

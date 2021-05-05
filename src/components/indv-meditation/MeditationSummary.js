@@ -28,6 +28,7 @@ class MeditationSummary extends React.Component {
 				<li key={meditation.id} className='meditation-list-item'>
 					<span>{format(new Date(meditation.date), 'EEEE MM/dd/yyyy')}</span>
 					<span>{smiley}</span>
+					<span>{meditation.description}</span>
 					<div className='button-container'>
 						<Link to={`/meditation/${meditation.id}`}>
 							<button type='button'>See More</button>

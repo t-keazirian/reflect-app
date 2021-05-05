@@ -24,12 +24,30 @@ class SignUp extends React.Component {
 				<section className='signup-div'>
 					<div className='form'>
 						<form onSubmit={this.handleSubmit}>
+						<label htmlFor='first-name'>First Name:</label>
+						<input 
+							type='text'
+							name='first-name'
+							id='first-name'
+							placeholder='First Name'
+							required
+							aria-required
+						/>
+						<label htmlFor='first-name'>Last Name:</label>
+						<input 
+							type='text'
+							name='last-name'
+							id='last-name'
+							placeholder='Last Name'
+							required
+							aria-required
+						/>
 							<label htmlFor='email'>Email Address:</label>
 							<input
 								type='email'
 								name='email'
 								id='email'
-								placeholder='type your email here'
+								placeholder='Email'
 								required
 								aria-required
 							/>
