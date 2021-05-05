@@ -56,7 +56,7 @@ class SignUp extends React.Component {
 								type='password'
 								name='password'
 								id='password'
-								placeholder='type your password here'
+								placeholder='Password'
 								required
 								aria-required
 							/>

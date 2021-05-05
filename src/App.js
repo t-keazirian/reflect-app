@@ -43,7 +43,6 @@ class App extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
-				console.log(meditations);
 				this.setState({
 					meditations: this.sortDatesDescending(meditations),
 				});
@@ -115,8 +114,8 @@ class App extends React.Component {
 							<Route path='/meditation/:id' component={MeditationDetail} />
 							<Route component={NotFound} />
 						</Switch>
-						<Footer />
 					</div>
+						<Footer />
 				</>
 			</ApiContext.Provider>
 		);

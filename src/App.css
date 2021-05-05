@@ -5,14 +5,17 @@
 html,
 body {
 	width: 100%;
-	height: 100%;
 	background-color: #f0f7ee;
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
 }
 
 div.app {
-	color: #1D2F6F;
+	color: #1d2f6f;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
 }
 
 /* Nav */
@@ -20,7 +23,7 @@ div.app {
 nav {
 	padding-bottom: 20px;
 	padding-top: 20px;
-	background-color: #79ADDC;
+	background-color: #79addc;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -36,19 +39,20 @@ div.nav {
 .fa-1x,
 .fa-2x {
 	margin-right: 5px;
-	/* color: #89ac55; */
-	color: #FCF5C7;
+	color: #fcf5c7;
 }
 
 svg.svg-inline--fa.fa-github.fa-w-16.fa-2x.font-awesome,
 svg.svg-inline--fa.fa-linkedin.fa-w-14.fa-2x.font-awesome {
+	margin-left: 10px;
+	margin-right: 10px;
 	color: #f1f2eb;
 }
 
 svg.svg-inline--fa.fa-smile.fa-w-16.fa-2x.font-awesome,
 svg.svg-inline--fa.fa-meh.fa-w-16.fa-2x.font-awesome,
 svg.svg-inline--fa.fa-frown.fa-w-16.fa-2x.font-awesome {
-	color: #1D2F6F;
+	color: #1d2f6f;
 }
 
 /* Buttons */
@@ -56,7 +60,7 @@ button {
 	font-family: 'Montserrat', sans-serif;
 	margin: 5px;
 	background-color: #fbd574;
-	color: #1D2F6F;
+	color: #1d2f6f;
 	cursor: pointer;
 	border-radius: 28px;
 	padding: 10px 15px;
@@ -67,7 +71,7 @@ button {
 
 button:hover {
 	color: #4a4a48;
-	box-shadow: 5px 5px 5px #FFC09F;
+	box-shadow: 5px 5px 5px #ffc09f;
 }
 
 button:active {
@@ -159,11 +163,12 @@ label {
 }
 
 input[type='email'],
-input[type='password'], input[type=text] {
+input[type='password'],
+input[type='text'] {
 	margin: 5px;
 	border-radius: 5px;
 	padding: 2px;
-	border: 1px solid #1D2F6F;
+	border: 1px solid #1d2f6f;
 }
 
 button[type='submit'] {
@@ -200,6 +205,10 @@ button[type='submit'].start-med-btn {
 h1.dash-h {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+h3.dash-h {
+	text-align: center;
 }
 
 /* Meditation Summary */
@@ -330,15 +339,9 @@ p.p-footer {
 }
 
 footer {
-	background-color: #79ADDC;
+	background-color: #79addc;
 	color: #ecf2e6;
 	width: 100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-footer#contact {
-	margin-top: 20px;
 }
 
 div.icons {
@@ -372,11 +375,11 @@ div.icons {
 		max-width: 800px;
 	}
 
-	div.app {
+	/* div.app {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
+	} */
 
 	section.why,
 	section.what,
