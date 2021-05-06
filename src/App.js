@@ -15,8 +15,6 @@ import Start from './components/start-meditation/Start';
 import config from './config';
 import EditMeditation from './components/edit/EditMeditation';
 import { compareDesc } from 'date-fns';
-// import MoodSearch from './search';
-// review MoodSearch and how to implement
 
 class App extends React.Component {
 	constructor() {
@@ -68,6 +66,12 @@ class App extends React.Component {
 		});
 	};
 
+	handleSearch = queriedReflections => {
+		this.setState({
+			meditations: queriedReflections,
+		});
+	};
+
 	sortDatesDescending = meditations => {
 		return meditations.sort((a, b) =>
 			compareDesc(new Date(a.date), new Date(b.date))
@@ -96,6 +100,7 @@ class App extends React.Component {
 			deleteMeditation: this.handleDeleteMeditation,
 			addMeditation: this.handleAddMeditation,
 			editMeditation: this.handleEditMeditation,
+			handleSearch: this.handleSearch,
 		};
 
 		return (
@@ -115,7 +120,7 @@ class App extends React.Component {
 							<Route component={NotFound} />
 						</Switch>
 					</div>
-						<Footer />
+					<Footer />
 				</>
 			</ApiContext.Provider>
 		);

@@ -1,8 +1,6 @@
-// https://dev.to/sage911/how-to-write-a-search-component-with-suggestions-in-react-d20
-
 import React from 'react';
-import config from './config';
-import ApiContext from './context/ApiContext';
+import config from '../../config';
+import ApiContext from '../../context/ApiContext';
 
 class MoodSearch extends React.Component {
 	constructor(props) {
@@ -36,14 +34,12 @@ class MoodSearch extends React.Component {
 				}
 				return res.json();
 			})
-			.then(meditations => {
-				this.setState({
-					meditations: meditations,
-				});
+			.then(queriedMeditations => {
+				this.context.handleSearch(queriedMeditations);
 			});
 	};
 
-	handleReset() {
+	handleReset = () => {
 		fetch(`${config.API_BASE_URL}`, {
 			method: 'GET',
 			headers: {
@@ -57,19 +53,16 @@ class MoodSearch extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
-				this.setState({
-					meditations: meditations,
-				});
+				this.context.handleSearch(meditations);
 			});
 	};
 
 	render() {
-		const { search, meditations } = this.state;
-		console.log(meditations);
+		const { search } = this.state;
 		return (
 			<div className='search'>
 				<form onSubmit={this.handleSearchSubmit}>
-					<label htmlFor='search'>Search by Mood:</label>
+					<label htmlFor='search' className='search-label'>Search by Mood:</label>
 					<select
 						name='search'
 						id='search'
@@ -81,10 +74,14 @@ class MoodSearch extends React.Component {
 						<option value='meh'>Meh</option>
 						<option value='happy'>Happy</option>
 					</select>
-					<button type='submit'>Search</button>
+					<div className='search-btns'>
+						<button type='submit'>Search</button>
+						<button type='submit' onClick={this.handleReset}>
+							Reset Search
+						</button>
+					</div>
 				</form>
-        
-				<button type='submit' onClick={this.handleReset}>Reset</button>
+
 				{/* how to display the search results? */}
 			</div>
 		);

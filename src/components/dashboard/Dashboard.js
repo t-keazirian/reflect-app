@@ -2,6 +2,7 @@ import React from 'react';
 import TotalMeditations from '../total-meditations/TotalMeditations';
 import ApiContext from '../../context/ApiContext';
 import { Link } from 'react-router-dom';
+import MoodSearch from '../MoodSearch/MoodSearch';
 
 class Dashboard extends React.Component {
 
@@ -54,6 +55,7 @@ class Dashboard extends React.Component {
 					</Link>
 					{minutesMessage}
 					{totalHeader}
+					<MoodSearch />
 				</div>
 				
 				<section className='meditations'>

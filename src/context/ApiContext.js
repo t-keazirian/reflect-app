@@ -4,7 +4,8 @@ const ApiContext = React.createContext({
 	meditations: [],
 	deleteMeditation: () => {},
 	addMeditation: () => {},
-	editMeditation: () => {}
+	editMeditation: () => {},
+	handleSearch: () => {},
 });
 
 export default ApiContext;
