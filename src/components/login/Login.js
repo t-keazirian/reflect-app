@@ -1,4 +1,5 @@
 import React from 'react';
+import TokenService from '../../services/token-service';
 
 class Login extends React.Component {
 	constructor() {
@@ -23,10 +24,14 @@ class Login extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		alert(
-			'This app is in beta testing. Click on Dashboard above to try it out!'
-		);
-		e.target.reset();
+		const { email, password } = this.state;
+		TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password))
+		console.log('login form submitted');
+		console.log({ email, password });
+		// alert(
+		// 	'This app is in beta testing. Click on Dashboard above to try it out!'
+		// );
+		// e.target.reset();
 	};
 	render() {
 		const { email, password } = this.state;
