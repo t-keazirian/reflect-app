@@ -14,7 +14,10 @@ import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import config from './config';
 import EditMeditation from './components/edit/EditMeditation';
+import PrivateRoute from './components/Utils/PrivateRoute';
+// import PublicRoute from './components/Utils/PublicRoute';
 import { compareDesc } from 'date-fns';
+import TokenService from './services/token-service';
 
 class App extends React.Component {
 	constructor() {
@@ -34,6 +37,7 @@ class App extends React.Component {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -96,17 +100,17 @@ class App extends React.Component {
 		});
 	};
 
-	handleUserId = (user_id) => {
+	handleUserId = user_id => {
 		this.setState({
-			user_id
-		})
-	}
+			user_id,
+		});
+	};
 
-	handleUserToken = (user_token) => {
+	handleUserToken = user_token => {
 		this.setState({
-			user_token
-		})
-	}
+			user_token,
+		});
+	};
 
 	render() {
 		const contextValue = {
@@ -116,7 +120,7 @@ class App extends React.Component {
 			editMeditation: this.handleEditMeditation,
 			handleSearch: this.handleSearch,
 			handleUserId: this.state.user_id,
-			handleUserToken: this.state.user_token
+			handleUserToken: this.state.user_token,
 		};
 
 		return (
@@ -126,13 +130,16 @@ class App extends React.Component {
 					<div className='app'>
 						<Switch>
 							<Route exact path='/' component={LandingPage} />
-							<Route path='/dashboard' component={Dashboard} />
+							<PrivateRoute path='/dashboard' component={Dashboard} />
 							<Route path='/signup' component={SignUp} />
 							<Route path='/login' component={Login} />
-							<Route path='/start' component={Start} />
-							<Route path='/reflect' component={Reflection} />
-							<Route path='/edit/:id' component={EditMeditation} />
-							<Route path='/meditation/:id' component={MeditationDetail} />
+							<PrivateRoute path='/start' component={Start} />
+							<PrivateRoute path='/reflect' component={Reflection} />
+							<PrivateRoute path='/edit/:id' component={EditMeditation} />
+							<PrivateRoute
+								path='/meditation/:id'
+								component={MeditationDetail}
+							/>
 							<Route component={NotFound} />
 						</Switch>
 					</div>
