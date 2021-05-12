@@ -7,8 +7,15 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import TokenService from '../../services/token-service';
 
 export default function Nav() {
+
+	// need to implement and add Logout button 
+	// const handleLogoutClick = () => {
+	// 	TokenService.clearAuthToken()
+	// }
+	
 	return (
 		<header>
 			<nav className='nav'>

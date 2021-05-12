@@ -6,6 +6,8 @@ const ApiContext = React.createContext({
 	addMeditation: () => {},
 	editMeditation: () => {},
 	handleSearch: () => {},
+	handleUserId: null,
+	handleUserToken: null
 });
 
 export default ApiContext;

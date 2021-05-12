@@ -28,10 +28,8 @@ class Login extends React.Component {
 		TokenService.saveAuthToken(TokenService.makeBasicAuthToken(email, password))
 		console.log('login form submitted');
 		console.log({ email, password });
-		// alert(
-		// 	'This app is in beta testing. Click on Dashboard above to try it out!'
-		// );
-		// e.target.reset();
+		// add the fetch here to /auth/login 
+		
 	};
 	render() {
 		const { email, password } = this.state;

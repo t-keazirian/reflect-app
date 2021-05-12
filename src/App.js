@@ -21,6 +21,8 @@ class App extends React.Component {
 		super();
 		this.state = {
 			meditations: [],
+			user_id: [],
+			user_token: [],
 			signedIn: false,
 		};
 	}
@@ -28,7 +30,7 @@ class App extends React.Component {
 	// once they submit form, set state signedIn to true
 
 	componentDidMount() {
-		fetch(`${config.API_BASE_URL}`, {
+		fetch(`${config.API_BASE_URL}/reflections`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
@@ -94,6 +96,18 @@ class App extends React.Component {
 		});
 	};
 
+	handleUserId = (user_id) => {
+		this.setState({
+			user_id
+		})
+	}
+
+	handleUserToken = (user_token) => {
+		this.setState({
+			user_token
+		})
+	}
+
 	render() {
 		const contextValue = {
 			meditations: this.state.meditations,
@@ -101,6 +115,8 @@ class App extends React.Component {
 			addMeditation: this.handleAddMeditation,
 			editMeditation: this.handleEditMeditation,
 			handleSearch: this.handleSearch,
+			handleUserId: this.state.user_id,
+			handleUserToken: this.state.user_token
 		};
 
 		return (
