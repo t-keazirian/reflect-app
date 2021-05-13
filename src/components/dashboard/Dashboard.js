@@ -3,13 +3,54 @@ import TotalMeditations from '../total-meditations/TotalMeditations';
 import ApiContext from '../../context/ApiContext';
 import { Link } from 'react-router-dom';
 import MoodSearch from '../MoodSearch/MoodSearch';
+import config from '../../config';
+import TokenService from '../../services/token-service';
+import { compareDesc } from 'date-fns';
 
 class Dashboard extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			meditations: [],
+		};
+	}
 
 	static contextType = ApiContext;
 
+	componentDidMount() {
+		const user_id = TokenService.getUserId();
+
+		fetch(`${config.API_BASE_URL}/reflections/${user_id}`, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
+			},
+		})
+			.then(res => {
+				if (!res.ok) {
+					return res.json().then(error => Promise.reject(error));
+				}
+				return res.json();
+			})
+			.then(meditations => {
+				this.setState({
+					meditations: this.sortDatesDescending(meditations),
+				});
+
+				this.context.setMeditations(meditations);
+				
+			});
+	}
+
+	sortDatesDescending = meditations => {
+		return meditations.sort((a, b) =>
+			compareDesc(new Date(a.date), new Date(b.date))
+		);
+	};
+
 	render() {
-		const { meditations } = this.context;
+		const { meditations } = this.state;
 
 		const minutesTotal = meditations.reduce(
 			(total, meditation) => total + meditation.minutes,
@@ -57,9 +98,9 @@ class Dashboard extends React.Component {
 					{totalHeader}
 					<MoodSearch />
 				</div>
-				
+
 				<section className='meditations'>
-					<TotalMeditations />
+					<TotalMeditations meditations={meditations} />
 				</section>
 			</div>
 		);

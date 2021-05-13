@@ -5,6 +5,7 @@ import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
+import TokenService from '../../services/token-service';
 
 class MeditationDetail extends React.Component {
 	constructor(props) {
@@ -22,15 +23,15 @@ class MeditationDetail extends React.Component {
 	static contextType = ApiContext;
 
 	componentDidMount() {
-
 		// get the user id
 		// res.body.id
 
 		const meditationId = this.props.match.params.id;
-		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+		fetch(`${config.API_BASE_URL}/reflections/meditations/${meditationId}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -54,10 +55,11 @@ class MeditationDetail extends React.Component {
 	handleClickDelete = () => {
 		const meditationId = parseInt(this.props.match.params.id, 10);
 
-		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+		fetch(`${config.API_BASE_URL}/reflections/meditations/${meditationId}`, {
 			method: 'DELETE',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		}).then(() => {
 			this.context.deleteMeditation(meditationId);
@@ -94,7 +96,9 @@ class MeditationDetail extends React.Component {
 				</header>
 				<div key={id} className='details'>
 					<div className='summary'>
-						<p>{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}</p>
+						<p>
+							{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}
+						</p>
 						<p>{smiley}</p>
 						<p>{description}</p>
 					</div>

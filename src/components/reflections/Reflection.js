@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApiContext from '../../context/ApiContext';
 import ValidationError from '../validation-error/ValidationError';
 import config from '../../config';
+import TokenService from '../../services/token-service';
 
 class Reflection extends React.Component {
 	constructor() {
@@ -27,6 +28,7 @@ class Reflection extends React.Component {
 	static contextType = ApiContext;
 
 	handleSubmit = e => {
+		const user_id = TokenService.getUserId();
 		e.preventDefault();
 		const { description, current_mood, notes } = this.state;
 		const newMeditation = {
@@ -36,10 +38,11 @@ class Reflection extends React.Component {
 			notes: notes.value,
 		};
 
-		fetch(`${config.API_BASE_URL}`, {
+		fetch(`${config.API_BASE_URL}/reflections/${user_id}`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 			body: JSON.stringify(newMeditation),
 		})
@@ -119,7 +122,9 @@ class Reflection extends React.Component {
 					>
 						<div className='describe'>
 							<label htmlFor='description'></label>
-							<h2 className='describe-h2'>Describe your session in a few words:</h2>
+							<h2 className='describe-h2'>
+								Describe your session in a few words:
+							</h2>
 							<input
 								type='text'
 								name='description'
@@ -206,3 +211,5 @@ class Reflection extends React.Component {
 }
 
 export default Reflection;
+
+

@@ -83,6 +83,10 @@ button.submit-btn {
 	margin-bottom: 20px;
 }
 
+button.sign-in-btn {
+	margin-bottom: 20px;
+}
+
 /* Links */
 
 a {
@@ -92,6 +96,12 @@ a {
 
 a:visited {
 	color: #ecf2e6;
+}
+
+a.new-user-link {
+	margin-top: 10px;
+	color: black;
+	text-decoration: underline;
 }
 
 a.signup-link {

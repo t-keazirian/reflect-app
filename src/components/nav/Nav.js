@@ -7,20 +7,16 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ApiContext from '../../context/ApiContext';
 import IdleService from '../../services/idle-service';
 import TokenService from '../../services/token-service';
 
 class Nav extends React.Component {
-	static contextType = ApiContext;
 
-	// need to implement and add Logout button
 	handleLogoutClick = () => {
 		TokenService.clearAuthToken();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
-		// this.context.clearCurrentUser()
-		// this.context.clearReflections()
+		TokenService.clearUserId();
 	};
 
 	renderLogoutLink = () => {
@@ -49,18 +45,18 @@ class Nav extends React.Component {
 		);
 	};
 
-	// renderSignUpLink = () => {
-	// 	return (
-	// 		<Link className='signup-link' to='/signup'>
-	// 					<FontAwesomeIcon
-	// 						icon={faUserPlus}
-	// 						className='font-awesome'
-	// 						size='1x'
-	// 					/>
-	// 					Sign Up
-	// 				</Link>
-	// 	)
-	// }
+	renderDashboard = () => {
+		return (
+			<Link className='dashboard-link' to='/dashboard'>
+							<FontAwesomeIcon
+								className='font-awesome'
+								icon={faList}
+								size='1x'
+							/>
+							Dashboard
+						</Link>
+		)
+	}
 
 	render() {
 		return (
@@ -71,14 +67,14 @@ class Nav extends React.Component {
 						Reflect
 					</Link>
 					<div className='nav'>
-						<Link className='dashboard-link' to='/dashboard'>
+						{/* <Link className='dashboard-link' to='/dashboard'>
 							<FontAwesomeIcon
 								className='font-awesome'
 								icon={faList}
 								size='1x'
 							/>
 							Dashboard
-						</Link>
+						</Link> */}
 						{/* <Link className='login-link' to='/login'>
 						<FontAwesomeIcon
 							className='font-awesome'
@@ -87,18 +83,12 @@ class Nav extends React.Component {
 						/>
 						Login
 					</Link> */}
+					{TokenService.hasAuthToken() && this.renderDashboard()}
+					
 						{TokenService.hasAuthToken()
 							? this.renderLogoutLink()
 							: this.renderLoginLink()}
 
-						{/* <Link className='signup-link' to='/signup'>
-						<FontAwesomeIcon
-							icon={faUserPlus}
-							className='font-awesome'
-							size='1x'
-						/>
-						Sign Up
-					</Link> */}
 					</div>
 				</nav>
 			</header>

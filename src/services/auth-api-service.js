@@ -5,7 +5,7 @@ import IdleService from './idle-service';
 const AuthApiService = {
 	postUser(user) {
 		return fetch(`${config.API_BASE_URL}/users`, {
-			method: postMessage,
+			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
 			},
@@ -18,15 +18,17 @@ const AuthApiService = {
 		});
 	},
 
-	postLogin({ email, password }) {
+	postLogin({email, password}) {
 		return fetch(`${config.API_BASE_URL}/auth/login`, {
 			method: 'POST',
 			headers: {
-				'content-type': 'appication/json',
+				'content-type': 'application/json',
 			},
-			body: JSON.stringify({ email, password }),
+			// body: JSON.parse(JSON.stringify(email, password)),
+			body: JSON.stringify({email, password})
 		})
 			.then(res => {
+				console.log(email, password);
 				if (!res.ok) {
 					return res.json().then(error => Promise.reject(error));
 				}

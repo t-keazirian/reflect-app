@@ -4,6 +4,7 @@ import { faFrown, faMeh, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import config from '../../config';
 import { format } from 'date-fns';
+import TokenService from '../../services/token-service';
 
 class EditMeditation extends React.Component {
 	constructor(props) {
@@ -22,10 +23,12 @@ class EditMeditation extends React.Component {
 
 	componentDidMount() {
 		const meditationId = this.props.match.params.id;
-		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+
+		fetch(`${config.API_BASE_URL}/reflections/meditations/${meditationId}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -82,11 +85,12 @@ class EditMeditation extends React.Component {
 			date,
 		};
 
-		fetch(`${config.API_BASE_URL}/${meditationId}`, {
+		fetch(`${config.API_BASE_URL}/reflections/meditations/${meditationId}`, {
 			method: 'PATCH',
 			body: JSON.stringify(editedMeditation),
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -109,7 +113,9 @@ class EditMeditation extends React.Component {
 				</header>
 				<div key={id} className='details'>
 					<form className='summary' onSubmit={this.handleSubmit}>
-					<p>{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}</p>
+						<p>
+							{date ? format(new Date(date), 'EEEE MM/dd/yyyy') : 'Loading...'}
+						</p>
 						<label htmlFor='description'></label>
 						<h2>Edit description:</h2>
 						<input

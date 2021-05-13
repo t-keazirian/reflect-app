@@ -74,7 +74,7 @@ class LandingPage extends React.Component {
 								className='font-awesome'
 								size='1x'
 							/>
-							Sign Up Now
+							Get Started
 						</Link>
 						</button>
 						<p>

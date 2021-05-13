@@ -9,6 +9,14 @@ const TokenService = {
 		window.localStorage.setItem(config.TOKEN_KEY, token);
 	},
 
+	saveUserId(user_id) {
+		window.localStorage.setItem('user_id', user_id);
+	},
+
+	getUserId() {
+		return window.localStorage.getItem('user_id');
+	},
+
 	getAuthToken() {
 		return window.localStorage.getItem(config.TOKEN_KEY);
 	},
@@ -16,6 +24,10 @@ const TokenService = {
 	clearAuthToken() {
 		console.log('clearing auth token');
 		window.localStorage.removeItem(config.TOKEN_KEY);
+	},
+
+	clearUserId() {
+		window.localStorage.removeItem('user_id')
 	},
 
 	hasAuthToken() {

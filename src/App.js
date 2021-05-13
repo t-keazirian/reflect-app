@@ -12,45 +12,59 @@ import MeditationDetail from './components/meditation-detail/MeditationDetail';
 import Reflection from './components/reflections/Reflection';
 import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
-import config from './config';
 import EditMeditation from './components/edit/EditMeditation';
 import PrivateRoute from './components/Utils/PrivateRoute';
 // import PublicRoute from './components/Utils/PublicRoute';
-import { compareDesc } from 'date-fns';
+
 import TokenService from './services/token-service';
+import IdleService from './services/idle-service';
 
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			meditations: [],
-			user_id: [],
-			user_token: [],
-			signedIn: false,
+			user_id: null,
+			user_token: null,
 		};
 	}
 
-	// once they submit form, set state signedIn to true
+	// componentDidMount() {
+	// 	fetch(`${config.API_BASE_URL}/reflections/1`, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			'content-type': 'application/json',
+	// 			authorization: `bearer ${TokenService.getAuthToken()}`,
+	// 		},
+	// 	})
+	// 		.then(res => {
+	// 			if (!res.ok) {
+	// 				return res.json().then(error => Promise.reject(error));
+	// 			}
+	// 			return res.json();
+	// 		})
+	// 		.then(meditations => {
+	// 			this.setState({
+	// 				meditations: this.sortDatesDescending(meditations),
+	// 			});
+	// 		});
+	// }
 
-	componentDidMount() {
-		fetch(`${config.API_BASE_URL}/reflections`, {
-			method: 'GET',
-			headers: {
-				'content-type': 'application/json',
-				authorization: `bearer ${TokenService.getAuthToken()}`,
-			},
+	componentWillUnmount() {
+		IdleService.unRegisterIdleResets();
+		TokenService.clearCallbackBeforeExpiry();
+	}
+
+	setMeditations = (meditations) => {
+		this.setState({
+			meditations: meditations
 		})
-			.then(res => {
-				if (!res.ok) {
-					return res.json().then(error => Promise.reject(error));
-				}
-				return res.json();
-			})
-			.then(meditations => {
-				this.setState({
-					meditations: this.sortDatesDescending(meditations),
-				});
-			});
+	}
+
+	clearMeditations = () => {
+		this.setState({
+			meditations: []
+		})
 	}
 
 	handleDeleteMeditation = meditationId => {
@@ -78,12 +92,6 @@ class App extends React.Component {
 		});
 	};
 
-	sortDatesDescending = meditations => {
-		return meditations.sort((a, b) =>
-			compareDesc(new Date(a.date), new Date(b.date))
-		);
-	};
-
 	handleEditMeditation = updatedMeditation => {
 		const newMeditationArray = this.state.meditations.map(meditation => {
 			if (meditation.id === updatedMeditation.id) {
@@ -106,21 +114,17 @@ class App extends React.Component {
 		});
 	};
 
-	handleUserToken = user_token => {
-		this.setState({
-			user_token,
-		});
-	};
-
 	render() {
 		const contextValue = {
 			meditations: this.state.meditations,
+			user_id: this.state.user_id,
+			user_token: this.state.user_token,
 			deleteMeditation: this.handleDeleteMeditation,
 			addMeditation: this.handleAddMeditation,
 			editMeditation: this.handleEditMeditation,
 			handleSearch: this.handleSearch,
-			handleUserId: this.state.user_id,
-			handleUserToken: this.state.user_token,
+			handleUserId: this.handleUserId,
+			setMeditations: this.setMeditations
 		};
 
 		return (

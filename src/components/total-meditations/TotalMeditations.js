@@ -10,7 +10,7 @@ class TotalMeditations extends React.Component {
 			<div className='meditation-container'>
 				<div className='list'>
 					<ul className='meditation-ul'>
-						{this.context.meditations.map(meditation => (
+						{this.props.meditations.map(meditation => (
 							<MeditationSummary meditation={meditation} key={meditation.id} />
 						))}
 					</ul>
