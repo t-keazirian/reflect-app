@@ -79,7 +79,7 @@ button:active {
 	margin: 6px 10px 2px 10px;
 }
 
-button.submit-btn {
+button[type='submit'].submit-btn {
 	margin-bottom: 20px;
 }
 
@@ -188,6 +188,7 @@ input[type='text'] {
 button[type='submit'] {
 	margin-top: 10px;
 	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 20px;
 }
 
 /* Login */
@@ -357,6 +358,7 @@ p.not-found {
 
 div.error {
 	color: red;
+	text-align: center;
 }
 
 /* Footer */

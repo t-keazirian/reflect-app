@@ -42,14 +42,6 @@ class SignUp extends React.Component {
 		});
 	};
 
-	// validateError = () => {
-	// 	const { error } = this.state;
-	// 	if (error) {
-	// 		console.log(error.message);
-	// 		// return error.message;
-	// 	}
-	// };
-
 	handleSubmit = e => {
 		e.preventDefault();
 		const { first_name, last_name, email, password } = this.state;
@@ -72,15 +64,23 @@ class SignUp extends React.Component {
 			})
 			.catch(err => {
 				this.setState({
-					error: err,
+					error: err.error.message,
 				});
-				console.log(err);
+				console.log(err.error.message);
 			});
+	};
+
+	validateError = () => {
+		const { error } = this.state;
+		if (error) {
+			console.log(error);
+			return error;
+		}
 	};
 
 	render() {
 		const { first_name, last_name, email, password, error } = this.state;
-		// const validationError = this.validateError();
+		const validationError = this.validateError();
 
 		return (
 			<>
@@ -142,7 +142,7 @@ class SignUp extends React.Component {
 							/>
 							<button type='submit'>Sign Me Up!</button>
 
-							{/* {error && <ValidationError message={validationError} />} */}
+							{error && <ValidationError message={validationError} />}
 						</form>
 					</div>
 				</section>
