@@ -5,15 +5,14 @@ import { Link } from 'react-router-dom';
 import MoodSearch from '../MoodSearch/MoodSearch';
 import config from '../../config';
 import TokenService from '../../services/token-service';
-import { compareDesc } from 'date-fns';
 
 class Dashboard extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			meditations: [],
-		};
-	}
+	// constructor() {
+	// 	super();
+	// 	this.state = {
+	// 		meditations: [],
+	// 	};
+	// }
 
 	static contextType = ApiContext;
 
@@ -34,23 +33,16 @@ class Dashboard extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
-				this.setState({
-					meditations: this.sortDatesDescending(meditations),
-				});
+			// 	this.setState({
+			// 		meditations: sortDates(meditations),
+			// 	});
 
 				this.context.setMeditations(meditations);
-				
 			});
 	}
 
-	sortDatesDescending = meditations => {
-		return meditations.sort((a, b) =>
-			compareDesc(new Date(a.date), new Date(b.date))
-		);
-	};
-
 	render() {
-		const { meditations } = this.state;
+		const { meditations } = this.context;
 
 		const minutesTotal = meditations.reduce(
 			(total, meditation) => total + meditation.minutes,
@@ -95,8 +87,8 @@ class Dashboard extends React.Component {
 						</button>
 					</Link>
 					{minutesMessage}
-					{totalHeader}
 					<MoodSearch />
+					{totalHeader}
 				</div>
 
 				<section className='meditations'>

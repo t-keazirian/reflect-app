@@ -1,6 +1,7 @@
 import React from 'react';
 import config from '../../config';
 import ApiContext from '../../context/ApiContext';
+import TokenService from '../../services/token-service';
 
 class MoodSearch extends React.Component {
 	constructor(props) {
@@ -20,12 +21,14 @@ class MoodSearch extends React.Component {
 	};
 
 	handleSearchSubmit = e => {
+		const user_id = TokenService.getUserId();
 		e.preventDefault();
 		const { search } = this.state;
-		fetch(`${config.API_BASE_URL}?mood=${search}`, {
+		fetch(`${config.API_BASE_URL}/reflections/${user_id}?mood=${search}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -35,15 +38,19 @@ class MoodSearch extends React.Component {
 				return res.json();
 			})
 			.then(queriedMeditations => {
+				console.log(queriedMeditations);
 				this.context.handleSearch(queriedMeditations);
 			});
+			console.log('clicked');
 	};
 
 	handleReset = () => {
-		fetch(`${config.API_BASE_URL}`, {
+		const user_id = TokenService.getUserId();
+		fetch(`${config.API_BASE_URL}/reflections/${user_id}`, {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `bearer ${TokenService.getAuthToken()}`,
 			},
 		})
 			.then(res => {
@@ -53,8 +60,11 @@ class MoodSearch extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
+				this.setState({
+					search: ''
+				})
 				this.context.handleSearch(meditations);
-			});
+			})
 	};
 
 	render() {
@@ -62,7 +72,9 @@ class MoodSearch extends React.Component {
 		return (
 			<div className='search'>
 				<form onSubmit={this.handleSearchSubmit}>
-					<label htmlFor='search' className='search-label'>Search by Mood:</label>
+					<label htmlFor='search' className='search-label'>
+						Search by Mood:
+					</label>
 					<select
 						name='search'
 						id='search'

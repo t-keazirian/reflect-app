@@ -82,8 +82,9 @@ class Login extends React.Component {
 					email: '',
 					password: '',
 				});
-				this.props.history.push('/dashboard');
 				TokenService.saveUserId(res.id);
+				this.context.handleUserId(res.id);
+				this.props.history.push('/dashboard');
 			})
 			.catch(err => {
 				this.setState({
@@ -107,6 +108,11 @@ class Login extends React.Component {
 			<section className='login'>
 				<div className='login'>
 					<h1>Sign in to your Reflect account</h1>
+					<div className='demo'>
+						<h4>Demo Account:</h4>
+						<p>Email: demo@email.com</p>
+						<p>Password: Demo123!</p>
+					</div>
 					<div className='form'>
 						<form onSubmit={this.handleSubmit}>
 							<label htmlFor='email'>Email Address:</label>
@@ -133,10 +139,8 @@ class Login extends React.Component {
 								required
 								aria-required
 							/>
-							
-							{error && (
-							<ValidationError message={validationError} />
-						)}
+
+							{error && <ValidationError message={validationError} />}
 
 							<button type='submit' className='sign-in-btn'>
 								Sign In

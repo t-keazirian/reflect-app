@@ -15,9 +15,10 @@ import Start from './components/start-meditation/Start';
 import EditMeditation from './components/edit/EditMeditation';
 import PrivateRoute from './components/Utils/PrivateRoute';
 // import PublicRoute from './components/Utils/PublicRoute';
-
+import sortDates from './components/Utils/sort-dates';
 import TokenService from './services/token-service';
 import IdleService from './services/idle-service';
+import AuthApiService from './services/auth-api-service';
 
 class App extends React.Component {
 	constructor() {
@@ -25,47 +26,57 @@ class App extends React.Component {
 		this.state = {
 			meditations: [],
 			user_id: null,
-			user_token: null,
+			auth_token: null,
 		};
 	}
 
-	// componentDidMount() {
-	// 	fetch(`${config.API_BASE_URL}/reflections/1`, {
-	// 		method: 'GET',
-	// 		headers: {
-	// 			'content-type': 'application/json',
-	// 			authorization: `bearer ${TokenService.getAuthToken()}`,
-	// 		},
-	// 	})
-	// 		.then(res => {
-	// 			if (!res.ok) {
-	// 				return res.json().then(error => Promise.reject(error));
-	// 			}
-	// 			return res.json();
-	// 		})
-	// 		.then(meditations => {
-	// 			this.setState({
-	// 				meditations: this.sortDatesDescending(meditations),
-	// 			});
-	// 		});
-	// }
+	componentDidMount() {
+		// logout a user when idle
+		IdleService.setIdleCallback(this.logoutFromIdle);
+
+		// if user is logged in
+		if (TokenService.hasAuthToken()) {
+			// tell idle service to register event listeners
+			// event listeners fire when user is active
+			// if user doesn't trigger event listeners, idleCallback is invoked (logout)
+			IdleService.registerIdleTimerResets();
+
+			// tell token service to read JWT, look at exp value and queue timeout before token expires
+			TokenService.queueCallbackBeforeExpiry(() => {
+				AuthApiService.postRefreshToken();
+			});
+		}
+	}
 
 	componentWillUnmount() {
 		IdleService.unRegisterIdleResets();
 		TokenService.clearCallbackBeforeExpiry();
 	}
 
-	setMeditations = (meditations) => {
+	logoutFromIdle = () => {
+		// remove token from local localStorage
+		TokenService.clearAuthToken();
+		// remove queued calls to refresh endpoint
+		TokenService.clearCallbackBeforeExpiry();
+		// remove timeouts that auto logout when idle
+		IdleService.unRegisterIdleResets();
 		this.setState({
-			meditations: meditations
-		})
-	}
+			auth: false,
+		});
+		this.forceUpdate();
+	};
+
+	setMeditations = meditations => {
+		this.setState({
+			meditations: sortDates(meditations),
+		});
+	};
 
 	clearMeditations = () => {
 		this.setState({
-			meditations: []
-		})
-	}
+			meditations: [],
+		});
+	};
 
 	handleDeleteMeditation = meditationId => {
 		const newArray = this.state.meditations.filter(
@@ -79,14 +90,12 @@ class App extends React.Component {
 	handleAddMeditation = newMeditation => {
 		console.log(newMeditation);
 		this.setState({
-			meditations: this.sortDatesDescending([
-				...this.state.meditations,
-				newMeditation,
-			]),
+			meditations: sortDates([...this.state.meditations, newMeditation]),
 		});
 	};
 
 	handleSearch = queriedReflections => {
+		console.log(queriedReflections, this.state.meditations);
 		this.setState({
 			meditations: queriedReflections,
 		});
@@ -114,6 +123,13 @@ class App extends React.Component {
 		});
 	};
 
+	logoutUser = () => {
+		this.setState({
+			auth_token: null,
+			user_id: null,
+		});
+	};
+
 	render() {
 		const contextValue = {
 			meditations: this.state.meditations,
@@ -124,13 +140,13 @@ class App extends React.Component {
 			editMeditation: this.handleEditMeditation,
 			handleSearch: this.handleSearch,
 			handleUserId: this.handleUserId,
-			setMeditations: this.setMeditations
+			setMeditations: this.setMeditations,
 		};
 
 		return (
 			<ApiContext.Provider value={contextValue}>
 				<>
-					<Nav />
+					<Nav logoutUser={this.logoutUser} />
 					<div className='app'>
 						<Switch>
 							<Route exact path='/' component={LandingPage} />

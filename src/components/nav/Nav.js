@@ -11,12 +11,12 @@ import IdleService from '../../services/idle-service';
 import TokenService from '../../services/token-service';
 
 class Nav extends React.Component {
-
 	handleLogoutClick = () => {
 		TokenService.clearAuthToken();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
 		TokenService.clearUserId();
+		this.props.logoutUser();
 	};
 
 	renderLogoutLink = () => {
@@ -48,17 +48,14 @@ class Nav extends React.Component {
 	renderDashboard = () => {
 		return (
 			<Link className='dashboard-link' to='/dashboard'>
-							<FontAwesomeIcon
-								className='font-awesome'
-								icon={faList}
-								size='1x'
-							/>
-							Dashboard
-						</Link>
-		)
-	}
+				<FontAwesomeIcon className='font-awesome' icon={faList} size='1x' />
+				Dashboard
+			</Link>
+		);
+	};
 
 	render() {
+		// const { auth } = this.props;
 		return (
 			<header>
 				<nav className='nav'>
@@ -83,12 +80,12 @@ class Nav extends React.Component {
 						/>
 						Login
 					</Link> */}
-					{TokenService.hasAuthToken() && this.renderDashboard()}
-					
+						{TokenService.hasAuthToken() && this.renderDashboard()}
+
 						{TokenService.hasAuthToken()
 							? this.renderLogoutLink()
 							: this.renderLoginLink()}
-
+						{/* {auth ? this.renderLogoutLink() : this.renderLoginLink()} */}
 					</div>
 				</nav>
 			</header>
