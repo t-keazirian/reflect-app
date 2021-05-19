@@ -8,7 +8,7 @@
 
 Reflect is a 5-minute Mindfulness Meditation web application.
 
-You can create your own account, or use the Demo account login to see how the app works!
+This app features authorization/authentication. You can create your own account, or use the Demo account login to see how the app works!
 
 When you would like to practice a meditation, click Start Meditation. A 5-minute timer will begin counting down. After your meditation, you will take a few minutes to reflect on your session. Describe your session in a few words, categorize your mood, and journal/detail any other reflections you have.
 
@@ -18,10 +18,19 @@ Reflect will keep track of your meditation sessions. You can look back on your p
 
 ### Screenshots:
 
+Landing Page:
 <img src="/src/images/LandingPage.png" alt="landing-page" />
+
+Sign In Page:
 <img src="/src/images/SignIn.png" alt= "sign-in"/>
+
+Dashboard:
 <img src="/src/images/Dashboard.png" alt= "dashboard" />
+
+Timer:
 <img src="/src/images/Timer.png" alt= "timer" />
+
+Reflect:
 <img src="/src/images/Reflect.png" alt= "reflect" />
 
 ### Built with:
