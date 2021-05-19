@@ -18,8 +18,7 @@ Reflect will keep track of your meditation sessions. You can look back on your p
 
 ### Screenshots:
 
-Landing Page:
-<img src="/src/images/LandingPage.png" alt="landing-page" />
+Landing Page: <img src="/src/images/LandingPage.png" alt="landing-page" />
 
 Sign In Page:
 <img src="/src/images/SignIn.png" alt= "sign-in"/>
