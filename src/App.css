@@ -39,14 +39,14 @@ div.nav {
 .fa-1x,
 .fa-2x {
 	margin-right: 5px;
-	color: #fcf5c7;
+	color: #2b3d41;
 }
 
 svg.svg-inline--fa.fa-github.fa-w-16.fa-2x.font-awesome,
 svg.svg-inline--fa.fa-linkedin.fa-w-14.fa-2x.font-awesome {
 	margin-left: 10px;
 	margin-right: 10px;
-	color: #f1f2eb;
+	color: #2b3d41;
 }
 
 svg.svg-inline--fa.fa-smile.fa-w-16.fa-2x.font-awesome,
@@ -91,11 +91,11 @@ button.sign-in-btn {
 
 a {
 	text-decoration: none;
-	color: #ecf2e6;
+	color: #2b3d41;
 }
 
 a:visited {
-	color: #ecf2e6;
+	color: #2b3d41;
 }
 
 a.new-user-link {
@@ -109,11 +109,11 @@ a.signup-link {
 }
 
 a.meditate-link:link {
-	color: #89ac55;
+	color: #B02E0C;
 }
 
 a.meditate-link:visited {
-	color: #89ac55;
+	color: #B02E0C;
 }
 
 a.homepage-link {
@@ -376,11 +376,12 @@ p.p-footer {
 	text-align: center;
 	padding-bottom: 20px;
 	margin-bottom: 0;
+	color: #2b3d41;
 }
 
 footer {
 	background-color: #79addc;
-	color: #ecf2e6;
+	color: #2b3d41;
 	width: 100%;
 }
 

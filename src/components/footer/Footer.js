@@ -13,6 +13,7 @@ export default function Footer() {
 						target='_blank'
 						className='footer-link'
 						rel='noreferrer'
+						aria-label='linkedin-link'
 					>
 						<i className='fab fa-linkedin fa-2x'></i>
 						<FontAwesomeIcon
@@ -32,7 +33,7 @@ export default function Footer() {
 							className='font-awesome'
 							icon={faGithub}
 							size='2x'
-							aria-label='linkedin-link'
+							
 						/>
 					</a>
 				</div>
