@@ -21,6 +21,7 @@ class LandingPage extends React.Component {
 								href='https://www.mindful.org/'
 								className='meditate-link'
 								target='_blank'
+								rel='noreferrer'
 							>
 								mindful.org
 							</a>
