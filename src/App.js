@@ -14,7 +14,6 @@ import ApiContext from './context/ApiContext';
 import Start from './components/start-meditation/Start';
 import EditMeditation from './components/edit/EditMeditation';
 import PrivateRoute from './components/Utils/PrivateRoute';
-// import PublicRoute from './components/Utils/PublicRoute';
 import sortDates from './components/Utils/sort-dates';
 import TokenService from './services/token-service';
 import IdleService from './services/idle-service';
@@ -88,14 +87,12 @@ class App extends React.Component {
 	};
 
 	handleAddMeditation = newMeditation => {
-		console.log(newMeditation);
 		this.setState({
 			meditations: sortDates([...this.state.meditations, newMeditation]),
 		});
 	};
 
 	handleSearch = queriedReflections => {
-		console.log(queriedReflections, this.state.meditations);
 		this.setState({
 			meditations: queriedReflections,
 		});

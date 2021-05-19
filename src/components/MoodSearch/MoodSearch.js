@@ -38,10 +38,8 @@ class MoodSearch extends React.Component {
 				return res.json();
 			})
 			.then(queriedMeditations => {
-				console.log(queriedMeditations);
 				this.context.handleSearch(queriedMeditations);
 			});
-			console.log('clicked');
 	};
 
 	handleReset = () => {

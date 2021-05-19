@@ -73,7 +73,6 @@ class SignUp extends React.Component {
 	validateError = () => {
 		const { error } = this.state;
 		if (error) {
-			console.log(error);
 			return error;
 		}
 	};
@@ -140,9 +139,9 @@ class SignUp extends React.Component {
 								required
 								aria-required
 							/>
+							{error && <ValidationError message={validationError} />}
 							<button type='submit'>Sign Me Up!</button>
 
-							{error && <ValidationError message={validationError} />}
 						</form>
 					</div>
 				</section>

@@ -7,13 +7,6 @@ import config from '../../config';
 import TokenService from '../../services/token-service';
 
 class Dashboard extends React.Component {
-	// constructor() {
-	// 	super();
-	// 	this.state = {
-	// 		meditations: [],
-	// 	};
-	// }
-
 	static contextType = ApiContext;
 
 	componentDidMount() {
@@ -33,10 +26,6 @@ class Dashboard extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
-				// 	this.setState({
-				// 		meditations: sortDates(meditations),
-				// 	});
-
 				this.context.setMeditations(meditations);
 			});
 	}
@@ -50,19 +39,7 @@ class Dashboard extends React.Component {
 		);
 
 		let minutesMessage;
-		// if (minutesTotal === 0) {
-		// 	minutesMessage = (
-		// 		<h2 className='dash-h'>
-		// 			Select Start New Meditation above to practice your first meditation!
-		// 		</h2>
-		// 	);
-		// } else {
-		// 	minutesMessage = (
-		// 		<h2 className='dash-h'>
-		// 			You have meditated for {minutesTotal} minutes!
-		// 		</h2>
-		// 	);
-		// }
+
 		if (minutesTotal !== 0) {
 			minutesMessage = (
 				<h2 className='dash-h'>
@@ -72,12 +49,9 @@ class Dashboard extends React.Component {
 		}
 
 		let totalHeader;
+
 		if (minutesTotal === 0) {
-			totalHeader = (
-				<h3 className='dash-h'>
-					No meditations found
-				</h3>
-			);
+			totalHeader = <h3 className='dash-h'>No meditations found</h3>;
 		} else {
 			totalHeader = <h3 className='dash-h'>Total Meditations:</h3>;
 		}

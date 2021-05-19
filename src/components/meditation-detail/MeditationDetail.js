@@ -23,9 +23,6 @@ class MeditationDetail extends React.Component {
 	static contextType = ApiContext;
 
 	componentDidMount() {
-		// get the user id
-		// res.body.id
-
 		const meditationId = this.props.match.params.id;
 		fetch(`${config.API_BASE_URL}/reflections/meditations/${meditationId}`, {
 			method: 'GET',

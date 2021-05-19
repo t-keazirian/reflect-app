@@ -38,7 +38,6 @@ class EditMeditation extends React.Component {
 				return res.json();
 			})
 			.then(meditation => {
-				console.log(meditation);
 				this.setState({
 					id: meditation.id,
 					description: meditation.description,
@@ -124,7 +123,9 @@ class EditMeditation extends React.Component {
 							id='description'
 							value={description}
 							onChange={this.handleDescriptionChange}
+							required
 						/>
+
 						<div className='mood'>
 							<h2>Edit Your Mood:</h2>
 						</div>
@@ -176,6 +177,7 @@ class EditMeditation extends React.Component {
 								rows='10'
 								value={notes}
 								onChange={this.handleNotesChange}
+								required
 							></textarea>
 						</div>
 						<button type='submit' className='submit-btn'>

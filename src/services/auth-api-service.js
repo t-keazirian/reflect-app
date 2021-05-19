@@ -24,11 +24,9 @@ const AuthApiService = {
 			headers: {
 				'content-type': 'application/json',
 			},
-			// body: JSON.parse(JSON.stringify(email, password)),
 			body: JSON.stringify({email, password})
 		})
 			.then(res => {
-				console.log(email, password);
 				if (!res.ok) {
 					return res.json().then(error => Promise.reject(error));
 				}

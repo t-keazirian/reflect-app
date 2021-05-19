@@ -9,14 +9,6 @@ class Login extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			// email: {
-			// 	value: "",
-			// 	touched: false,
-			// },
-			// password: {
-			// 	value: "",
-			// 	touched: false,
-			// },
 			email: '',
 			password: '',
 			error: null,
@@ -24,24 +16,6 @@ class Login extends React.Component {
 	}
 
 	static contextType = ApiContext;
-
-	// updateEmail = e => {
-	// 	this.setState({
-	// 		email: {
-	// 			value: e.target.value,
-	// 			touched: true,
-	// 		},
-	// 	});
-	// };
-
-	// updatePassword = e => {
-	// 	this.setState({
-	// 		password: {
-	// 			value: e.target.value,
-	// 			touched: true,
-	// 		},
-	// 	});
-	// };
 
 	updateEmail = e => {
 		this.setState({
@@ -58,27 +32,15 @@ class Login extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const { email, password } = this.state;
-		// const emailValue = email.value;
-		// const passwordValue = password.value;
 
 		console.log('login form submitted');
-		// console.log(emailValue, passwordValue);
 		console.log(email, password);
 
-		// AuthApiService.postLogin(emailValue, passwordValue)
 		AuthApiService.postLogin({ email, password })
 
 			.then(res => {
 				console.log(res);
 				this.setState({
-					// email: {
-					// 	value: '',
-					// 	touched: false,
-					// },
-					// password: {
-					// 	value: '',
-					// 	touched: false,
-					// },
 					email: '',
 					password: '',
 				});
@@ -107,9 +69,9 @@ class Login extends React.Component {
 		return (
 			<section className='login'>
 				<div className='login'>
-					<h1>Sign in to your Reflect account</h1>
+					<h1 className='h1-sign-in'>Sign in to your Reflect account</h1>
 					<div className='demo'>
-						<h4>Demo Account:</h4>
+						<h3>Demo Account:</h3>
 						<p>Email: demo@email.com</p>
 						<p>Password: Demo123!</p>
 					</div>
@@ -121,7 +83,6 @@ class Login extends React.Component {
 								name='email'
 								id='email'
 								placeholder='Email'
-								// value={email.value}
 								value={email}
 								onChange={this.updateEmail}
 								required
@@ -133,7 +94,6 @@ class Login extends React.Component {
 								name='password'
 								id='password'
 								placeholder='Password'
-								// value={password.value}
 								value={password}
 								onChange={this.updatePassword}
 								required

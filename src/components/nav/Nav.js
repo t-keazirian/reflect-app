@@ -55,7 +55,6 @@ class Nav extends React.Component {
 	};
 
 	render() {
-		// const { auth } = this.props;
 		return (
 			<header>
 				<nav className='nav'>
@@ -64,28 +63,11 @@ class Nav extends React.Component {
 						Reflect
 					</Link>
 					<div className='nav'>
-						{/* <Link className='dashboard-link' to='/dashboard'>
-							<FontAwesomeIcon
-								className='font-awesome'
-								icon={faList}
-								size='1x'
-							/>
-							Dashboard
-						</Link> */}
-						{/* <Link className='login-link' to='/login'>
-						<FontAwesomeIcon
-							className='font-awesome'
-							icon={faSignInAlt}
-							size='1x'
-						/>
-						Login
-					</Link> */}
 						{TokenService.hasAuthToken() && this.renderDashboard()}
 
 						{TokenService.hasAuthToken()
 							? this.renderLogoutLink()
 							: this.renderLoginLink()}
-						{/* {auth ? this.renderLogoutLink() : this.renderLoginLink()} */}
 					</div>
 				</nav>
 			</header>
