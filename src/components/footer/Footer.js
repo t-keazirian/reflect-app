@@ -26,11 +26,13 @@ export default function Footer() {
 						href='https://github.com/t-keazirian'
 						target='_blank'
 						rel='noreferrer'
+						aria-label='github-link'
 					>
 						<FontAwesomeIcon
 							className='font-awesome'
 							icon={faGithub}
 							size='2x'
+							aria-label='linkedin-link'
 						/>
 					</a>
 				</div>
