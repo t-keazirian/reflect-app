@@ -33,9 +33,9 @@ class Dashboard extends React.Component {
 				return res.json();
 			})
 			.then(meditations => {
-			// 	this.setState({
-			// 		meditations: sortDates(meditations),
-			// 	});
+				// 	this.setState({
+				// 		meditations: sortDates(meditations),
+				// 	});
 
 				this.context.setMeditations(meditations);
 			});
@@ -50,13 +50,20 @@ class Dashboard extends React.Component {
 		);
 
 		let minutesMessage;
-		if (minutesTotal === 0) {
-			minutesMessage = (
-				<h2 className='dash-h'>
-					Select Start New Meditation above to practice your first meditation!
-				</h2>
-			);
-		} else {
+		// if (minutesTotal === 0) {
+		// 	minutesMessage = (
+		// 		<h2 className='dash-h'>
+		// 			Select Start New Meditation above to practice your first meditation!
+		// 		</h2>
+		// 	);
+		// } else {
+		// 	minutesMessage = (
+		// 		<h2 className='dash-h'>
+		// 			You have meditated for {minutesTotal} minutes!
+		// 		</h2>
+		// 	);
+		// }
+		if (minutesTotal !== 0) {
 			minutesMessage = (
 				<h2 className='dash-h'>
 					You have meditated for {minutesTotal} minutes!
@@ -68,7 +75,7 @@ class Dashboard extends React.Component {
 		if (minutesTotal === 0) {
 			totalHeader = (
 				<h3 className='dash-h'>
-					Your list of meditations will appear below...
+					No meditations found
 				</h3>
 			);
 		} else {
