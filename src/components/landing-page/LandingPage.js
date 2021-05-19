@@ -16,16 +16,12 @@ class LandingPage extends React.Component {
 					<div className='intro'>
 						<p>
 							By now, you have most likely heard of meditation. Maybe you've
-							even tried it! According to
+							even tried it! According to{' '}
 							<a
-								href='https://www.mindful.org/how-to-meditate-3/'
+								href='https://www.mindful.org/'
 								className='meditate-link'
+								target='_blank'
 							>
-								{' '}
-								this article
-							</a>{' '}
-							from{' '}
-							<a href='https://www.mindful.org/' className='meditate-link'>
 								mindful.org
 							</a>
 							, "When we meditate, we inject far-reaching and long-lasting
@@ -40,7 +36,7 @@ class LandingPage extends React.Component {
 				</section>
 				<section className='what'>
 					<div className='mid'>
-					<hr />
+						<hr />
 						<h3>How does it work?</h3>
 						<p>
 							With Reflect, you meditate for 5 minutes. That's it! During that
@@ -65,17 +61,17 @@ class LandingPage extends React.Component {
 				</section>
 				<section className='signup'>
 					<div className='signup'>
-					<hr />
+						<hr />
 						<h3>Sign up</h3>
 						<button>
-						<Link className='signup-link' to='/signup'>
-							<FontAwesomeIcon
-								icon={faUserPlus}
-								className='font-awesome'
-								size='1x'
-							/>
-							Get Started
-						</Link>
+							<Link className='signup-link' to='/signup'>
+								<FontAwesomeIcon
+									icon={faUserPlus}
+									className='font-awesome'
+									size='1x'
+								/>
+								Get Started
+							</Link>
 						</button>
 						<p>
 							When you sign up for a Reflect account, you can track your
