@@ -32,7 +32,7 @@ class SignUp extends React.Component {
 
 	updateEmail = e => {
 		this.setState({
-			email: e.target.value,
+			email: e.target.value.toLowerCase(),
 		});
 	};
 
@@ -59,7 +59,7 @@ class SignUp extends React.Component {
 				});
 				this.props.history.push('/dashboard');
 				TokenService.getUserId();
-				TokenService.saveUserId(res.id)
+				TokenService.saveUserId(res.id);
 				TokenService.saveAuthToken(res.authToken);
 			})
 			.catch(err => {
@@ -141,7 +141,6 @@ class SignUp extends React.Component {
 							/>
 							{error && <ValidationError message={validationError} />}
 							<button type='submit'>Sign Me Up!</button>
-
 						</form>
 					</div>
 				</section>
