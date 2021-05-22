@@ -18,6 +18,10 @@ div.app {
 	min-height: 100vh;
 }
 
+::selection {
+	background-color: #79addc;
+}
+
 /* Nav */
 
 nav {
