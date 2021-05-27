@@ -80,7 +80,8 @@ button:hover {
 
 button:active {
 	box-shadow: 0 0 0 white;
-	margin: 6px 10px 2px 10px;
+	/* margin: 6px 10px 2px 10px; */
+	margin: 6px 5px 4px;
 }
 
 button[type='submit'].submit-btn {
@@ -113,11 +114,11 @@ a.signup-link {
 }
 
 a.meditate-link:link {
-	color: #B02E0C;
+	color: #b02e0c;
 }
 
 a.meditate-link:visited {
-	color: #B02E0C;
+	color: #b02e0c;
 }
 
 a.homepage-link {
@@ -292,6 +293,11 @@ div.timer-wrapper {
 
 h4 {
 	text-align: center;
+}
+
+h4.start-h4 {
+	line-height: 1.5;
+	margin-top: 75px;
 }
 
 div.start {
